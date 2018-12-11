@@ -7,23 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B192C2521B1257D0059DDDD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B192C2421B1257D0059DDDD /* MainViewController.swift */; };
+		1B192C2821B125E10059DDDD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B192C2721B125E10059DDDD /* UIColor.swift */; };
 		1B6594512178B10C004AC7E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6594502178B10C004AC7E2 /* AppDelegate.swift */; };
-		1B6594532178B10C004AC7E2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6594522178B10C004AC7E2 /* FirstViewController.swift */; };
-		1B6594552178B10C004AC7E2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6594542178B10C004AC7E2 /* SecondViewController.swift */; };
 		1B6594582178B10C004AC7E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6594562178B10C004AC7E2 /* Main.storyboard */; };
 		1B65945A2178B10E004AC7E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6594592178B10E004AC7E2 /* Assets.xcassets */; };
 		1B65945D2178B10E004AC7E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B65945B2178B10E004AC7E2 /* LaunchScreen.storyboard */; };
+		1B72C63621BFEE230059BF78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B72C63521BFEE230059BF78 /* HomeViewController.swift */; };
+		1BA70C2521B7E17800FF3A4C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BA70C2421B7E17800FF3A4C /* logo.png */; };
+		1BB583A721BA8A5000D41BE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1BB583A621BA8A5000D41BE2 /* Localizable.strings */; };
+		1BDEE0472179DD1400DA5EBE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE0462179DD1400DA5EBE /* LoginViewController.swift */; };
+		1BDEE0532179DD6400DA5EBE /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE0492179DD6400DA5EBE /* Util.swift */; };
+		1BDEE0542179DD6400DA5EBE /* MyOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE04A2179DD6400DA5EBE /* MyOrder.swift */; };
+		1BDEE0552179DD6400DA5EBE /* NavigationController+BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE04B2179DD6400DA5EBE /* NavigationController+BackButton.swift */; };
+		1BDEE0562179DD6400DA5EBE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE04C2179DD6400DA5EBE /* Constants.swift */; };
+		1BDEE0572179DD6400DA5EBE /* MyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE04D2179DD6400DA5EBE /* MyRequest.swift */; };
+		1BDEE0582179DD6400DA5EBE /* ExtendString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE04E2179DD6400DA5EBE /* ExtendString.swift */; };
+		1BDEE0592179DD6400DA5EBE /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE04F2179DD6400DA5EBE /* GlobalVar.swift */; };
+		1BDEE05A2179DD6400DA5EBE /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE0502179DD6400DA5EBE /* ModelManager.swift */; };
+		1BDEE05B2179DD6400DA5EBE /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE0512179DD6400DA5EBE /* Downloader.swift */; };
+		1BDEE05C2179DD6400DA5EBE /* SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDEE0522179DD6400DA5EBE /* SQL.swift */; };
+		1BF892A421BE75C0001E2CB3 /* az.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1BF892A321BE75C0001E2CB3 /* az.sqlite */; };
+		AF83E45B0E5AD48DD5C3DE9E /* Pods_AZ_Holistic_Sport_Clinic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69660D390FFFFF406B55A82A /* Pods_AZ_Holistic_Sport_Clinic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08A4E0D46E22719B1C049309 /* Pods-AZ Holistic Sport Clinic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AZ Holistic Sport Clinic.debug.xcconfig"; path = "Target Support Files/Pods-AZ Holistic Sport Clinic/Pods-AZ Holistic Sport Clinic.debug.xcconfig"; sourceTree = "<group>"; };
+		135CDB83391E1713AD36AF73 /* Pods-AZ Holistic Sport Clinic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AZ Holistic Sport Clinic.release.xcconfig"; path = "Target Support Files/Pods-AZ Holistic Sport Clinic/Pods-AZ Holistic Sport Clinic.release.xcconfig"; sourceTree = "<group>"; };
+		1B192C2421B1257D0059DDDD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1B192C2721B125E10059DDDD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		1B65944D2178B10C004AC7E2 /* AZ Holistic Sport Clinic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AZ Holistic Sport Clinic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6594502178B10C004AC7E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1B6594522178B10C004AC7E2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		1B6594542178B10C004AC7E2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		1B6594572178B10C004AC7E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B6594592178B10E004AC7E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B65945C2178B10E004AC7E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B65945E2178B10E004AC7E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B72C63521BFEE230059BF78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1BA70C2421B7E17800FF3A4C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		1BB583A621BA8A5000D41BE2 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1BDEE0462179DD1400DA5EBE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1BDEE0492179DD6400DA5EBE /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1BDEE04A2179DD6400DA5EBE /* MyOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrder.swift; sourceTree = "<group>"; };
+		1BDEE04B2179DD6400DA5EBE /* NavigationController+BackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationController+BackButton.swift"; sourceTree = "<group>"; };
+		1BDEE04C2179DD6400DA5EBE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1BDEE04D2179DD6400DA5EBE /* MyRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRequest.swift; sourceTree = "<group>"; };
+		1BDEE04E2179DD6400DA5EBE /* ExtendString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendString.swift; sourceTree = "<group>"; };
+		1BDEE04F2179DD6400DA5EBE /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
+		1BDEE0502179DD6400DA5EBE /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		1BDEE0512179DD6400DA5EBE /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		1BDEE0522179DD6400DA5EBE /* SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQL.swift; sourceTree = "<group>"; };
+		1BDEE05D2179E17500DA5EBE /* MyBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBridgingHeader.h; sourceTree = "<group>"; };
+		1BDEE05E2179E4D800DA5EBE /* AZ Holistic Sport Clinic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AZ Holistic Sport Clinic.entitlements"; sourceTree = "<group>"; };
+		1BF892A321BE75C0001E2CB3 /* az.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = az.sqlite; sourceTree = "<group>"; };
+		69660D390FFFFF406B55A82A /* Pods_AZ_Holistic_Sport_Clinic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AZ_Holistic_Sport_Clinic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +67,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF83E45B0E5AD48DD5C3DE9E /* Pods_AZ_Holistic_Sport_Clinic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B16667321B521BD004C9C8D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1BA70C2421B7E17800FF3A4C /* logo.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		1B192C2621B125CB0059DDDD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B192C2721B125E10059DDDD /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1B6594442178B10B004AC7E2 = {
 			isa = PBXGroup;
 			children = (
 				1B65944F2178B10C004AC7E2 /* AZ Holistic Sport Clinic */,
 				1B65944E2178B10C004AC7E2 /* Products */,
+				95A6E553A183EA51EC3B03E9 /* Pods */,
+				FCF0DE032093E90265FB1C3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +112,72 @@
 			isa = PBXGroup;
 			children = (
 				1B6594502178B10C004AC7E2 /* AppDelegate.swift */,
-				1B6594522178B10C004AC7E2 /* FirstViewController.swift */,
-				1B6594542178B10C004AC7E2 /* SecondViewController.swift */,
-				1B6594562178B10C004AC7E2 /* Main.storyboard */,
 				1B6594592178B10E004AC7E2 /* Assets.xcassets */,
-				1B65945B2178B10E004AC7E2 /* LaunchScreen.storyboard */,
+				1BDEE05E2179E4D800DA5EBE /* AZ Holistic Sport Clinic.entitlements */,
+				1B192C2621B125CB0059DDDD /* Extensions */,
+				1B16667321B521BD004C9C8D /* Images */,
 				1B65945E2178B10E004AC7E2 /* Info.plist */,
+				1B65945B2178B10E004AC7E2 /* LaunchScreen.storyboard */,
+				1BB583A621BA8A5000D41BE2 /* Localizable.strings */,
+				1BDEE0482179DD5300DA5EBE /* Library */,
+				1B6594562178B10C004AC7E2 /* Main.storyboard */,
+				1BDEE05D2179E17500DA5EBE /* MyBridgingHeader.h */,
+				1BB583A321BA897F00D41BE2 /* SQL */,
+				1BDEE0452179DCFE00DA5EBE /* Views */,
 			);
 			path = "AZ Holistic Sport Clinic";
+			sourceTree = "<group>";
+		};
+		1BB583A321BA897F00D41BE2 /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				1BF892A321BE75C0001E2CB3 /* az.sqlite */,
+			);
+			path = SQL;
+			sourceTree = "<group>";
+		};
+		1BDEE0452179DCFE00DA5EBE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1BDEE0462179DD1400DA5EBE /* LoginViewController.swift */,
+				1B192C2421B1257D0059DDDD /* MainViewController.swift */,
+				1B72C63521BFEE230059BF78 /* HomeViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1BDEE0482179DD5300DA5EBE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				1BDEE04C2179DD6400DA5EBE /* Constants.swift */,
+				1BDEE0512179DD6400DA5EBE /* Downloader.swift */,
+				1BDEE04E2179DD6400DA5EBE /* ExtendString.swift */,
+				1BDEE04F2179DD6400DA5EBE /* GlobalVar.swift */,
+				1BDEE0502179DD6400DA5EBE /* ModelManager.swift */,
+				1BDEE04A2179DD6400DA5EBE /* MyOrder.swift */,
+				1BDEE04D2179DD6400DA5EBE /* MyRequest.swift */,
+				1BDEE04B2179DD6400DA5EBE /* NavigationController+BackButton.swift */,
+				1BDEE0522179DD6400DA5EBE /* SQL.swift */,
+				1BDEE0492179DD6400DA5EBE /* Util.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		95A6E553A183EA51EC3B03E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08A4E0D46E22719B1C049309 /* Pods-AZ Holistic Sport Clinic.debug.xcconfig */,
+				135CDB83391E1713AD36AF73 /* Pods-AZ Holistic Sport Clinic.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FCF0DE032093E90265FB1C3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				69660D390FFFFF406B55A82A /* Pods_AZ_Holistic_Sport_Clinic.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +187,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B6594612178B10E004AC7E2 /* Build configuration list for PBXNativeTarget "AZ Holistic Sport Clinic" */;
 			buildPhases = (
+				1B1BF81A227BC053AE4D060C /* [CP] Check Pods Manifest.lock */,
 				1B6594492178B10B004AC7E2 /* Sources */,
 				1B65944A2178B10B004AC7E2 /* Frameworks */,
 				1B65944B2178B10B004AC7E2 /* Resources */,
+				466DEA6A645DB20A6B6B0238 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +214,11 @@
 				TargetAttributes = {
 					1B65944C2178B10B004AC7E2 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -125,22 +245,96 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BA70C2521B7E17800FF3A4C /* logo.png in Resources */,
+				1BB583A721BA8A5000D41BE2 /* Localizable.strings in Resources */,
 				1B65945D2178B10E004AC7E2 /* LaunchScreen.storyboard in Resources */,
 				1B65945A2178B10E004AC7E2 /* Assets.xcassets in Resources */,
+				1BF892A421BE75C0001E2CB3 /* az.sqlite in Resources */,
 				1B6594582178B10C004AC7E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B1BF81A227BC053AE4D060C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AZ Holistic Sport Clinic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		466DEA6A645DB20A6B6B0238 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AZ Holistic Sport Clinic/Pods-AZ Holistic Sport Clinic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/RSBarcodes_Swift/RSBarcodes_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHTTP/SwiftHTTP.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSBarcodes_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHTTP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AZ Holistic Sport Clinic/Pods-AZ Holistic Sport Clinic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B6594492178B10B004AC7E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B6594552178B10C004AC7E2 /* SecondViewController.swift in Sources */,
+				1BDEE0582179DD6400DA5EBE /* ExtendString.swift in Sources */,
+				1BDEE0552179DD6400DA5EBE /* NavigationController+BackButton.swift in Sources */,
+				1BDEE0472179DD1400DA5EBE /* LoginViewController.swift in Sources */,
+				1BDEE0572179DD6400DA5EBE /* MyRequest.swift in Sources */,
+				1B192C2821B125E10059DDDD /* UIColor.swift in Sources */,
+				1B72C63621BFEE230059BF78 /* HomeViewController.swift in Sources */,
+				1BDEE05A2179DD6400DA5EBE /* ModelManager.swift in Sources */,
+				1BDEE0592179DD6400DA5EBE /* GlobalVar.swift in Sources */,
+				1BDEE0532179DD6400DA5EBE /* Util.swift in Sources */,
+				1BDEE05B2179DD6400DA5EBE /* Downloader.swift in Sources */,
+				1B192C2521B1257D0059DDDD /* MainViewController.swift in Sources */,
 				1B6594512178B10C004AC7E2 /* AppDelegate.swift in Sources */,
-				1B6594532178B10C004AC7E2 /* FirstViewController.swift in Sources */,
+				1BDEE0542179DD6400DA5EBE /* MyOrder.swift in Sources */,
+				1BDEE05C2179DD6400DA5EBE /* SQL.swift in Sources */,
+				1BDEE0562179DD6400DA5EBE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,17 +478,21 @@
 		};
 		1B6594622178B10E004AC7E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08A4E0D46E22719B1C049309 /* Pods-AZ Holistic Sport Clinic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AZ Holistic Sport Clinic/AZ Holistic Sport Clinic.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA38P4WTWK;
 				INFOPLIST_FILE = "AZ Holistic Sport Clinic/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pegasosis.com.AZ-Holistic-Sport-Clinic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AZ Holistic Sport Clinic/MyBridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,17 +500,21 @@
 		};
 		1B6594632178B10E004AC7E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 135CDB83391E1713AD36AF73 /* Pods-AZ Holistic Sport Clinic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "AZ Holistic Sport Clinic/AZ Holistic Sport Clinic.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA38P4WTWK;
 				INFOPLIST_FILE = "AZ Holistic Sport Clinic/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pegasosis.com.AZ-Holistic-Sport-Clinic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AZ Holistic Sport Clinic/MyBridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
