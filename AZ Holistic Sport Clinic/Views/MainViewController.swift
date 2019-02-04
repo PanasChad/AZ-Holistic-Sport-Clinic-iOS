@@ -1,6 +1,6 @@
 //
 //  Main.swift
-//  Kapodistrias Tool
+//  AZ
 //
 //  Created by Μανώλης Γεωργίου on 03/08/16.
 //  Copyright © 2016 Μανώλης Γεωργίου. All rights reserved.
@@ -14,12 +14,11 @@ class MainViewController: UITabBarController {
     func viewDidLoadHello() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.tabBar.tintColor = UIColor().convertHexStringToColor(GlobalVar.redColor)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor().convertHexStringToColor(GlobalVar.blueColor)]
         
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         
         let values:NSDictionary =  ModelManager.getInstance().line("SELECT * FROM user")
-        
         
         GlobalVar.devicePassword = values.value(forKey: "user_password") as! String
         
@@ -264,7 +263,4 @@ class MainViewController: UITabBarController {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
-    
-    
-    
 }

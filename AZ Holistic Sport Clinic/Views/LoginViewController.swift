@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor().convertHexStringToColor(GlobalVar.blueColor)]
         btnSubmit.layer.cornerRadius = 5
         
         txtUsername.delegate = self
@@ -87,10 +87,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             HTTP.POST(GlobalVar.URL+"login.php", parameters:parameters_arr) { response in
                 //do things...
                 
-                OperationQueue.main.addOperation {
+                DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-                
                 
                 
                 if let err = response.error {
@@ -103,7 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                     alertController.addAction(OKAction)
                     
-                    OperationQueue.main.addOperation {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+5) {
                         self.btnSubmit.isEnabled = true
                         self.txtUsername.isEnabled = true
                         self.txtPassword.isEnabled = true
@@ -126,7 +125,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                     alertController.addAction(OKAction)
                     
-                    OperationQueue.main.addOperation {
+                    DispatchQueue.main.asyncAfter(deadline: .now()+5) {
                         self.btnSubmit.isEnabled = true
                         self.txtUsername.isEnabled = true
                         self.txtPassword.isEnabled = true
@@ -142,34 +141,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 let values : NSMutableDictionary = NSMutableDictionary()
                 
-                values.setValue(json_response.value(forKey: "customer_id"), forKey: "customer_id")
-                values.setValue(json_response.value(forKey: "customer_code"), forKey: "customer_code")
-                values.setValue(self.txtPassword.text as! String, forKey: "customer_password")
-                values.setValue(json_response.value(forKey: "customer_fullname"), forKey: "customer_fullname")
-                values.setValue(json_response.value(forKey: "customer_end_of_subscription"), forKey: "customer_end_of_subscription")
-                values.setValue(json_response.value(forKey: "customer_remaining_amount"), forKey: "customer_remaining_amount")
-                values.setValue(json_response.value(forKey: "customer_next_appointment"), forKey: "customer_next_appointment")
-                values.setValue(json_response.value(forKey: "customer_mobile_token"), forKey: "customer_mobile_token")
+                DispatchQueue.main.async {
+                    
+                    values.setValue(json_response.value(forKey: "customer_id"), forKey: "customer_id")
+                    values.setValue(json_response.value(forKey: "customer_code"), forKey: "customer_code")
+                    values.setValue(self.txtPassword.text as! String, forKey: "customer_password")
+                    values.setValue(json_response.value(forKey: "customer_fullname"), forKey: "customer_fullname")
+                    values.setValue(json_response.value(forKey: "customer_end_of_subscription"), forKey: "customer_end_of_subscription")
+                    values.setValue(json_response.value(forKey: "customer_remaining_amount"), forKey: "customer_remaining_amount")
+                    values.setValue(json_response.value(forKey: "customer_next_appointment"), forKey: "customer_next_appointment")
+                    values.setValue("---", forKey: "customer_mobile_token")
+                    values.setValue("en", forKey: "customer_language")
+                    values.setValue("true", forKey: "customer_notifications")
+                    
+                    //values.setValue(json_response.value(forKey: "customer_id"), forKey: "customer_language")
+                    //values.setValue(json_response.value(forKey: "customer_id"), forKey: "customer_notifications")
+                    
+                    ModelManager.getInstance().deleteAll("customer")
+                    ModelManager.getInstance().insert("customer", valuesDictionary: values)
+                    
+                    GlobalVar.deviceID = json_response.value(forKey: "customer_id")as! String
+                    GlobalVar.deviceUsername = self.txtUsername.text as! String
+                    GlobalVar.devicePassword = self.txtPassword.text as! String
+                    
+                    //GlobalVar.deviceTokenString = json_response.value(forKey: "my_customer_key") as! String
+                    GlobalVar.deviceLang = ""
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+                    
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 
-                //values.setValue(json_response.value(forKey: "customer_id"), forKey: "customer_language")
-                //values.setValue(json_response.value(forKey: "customer_id"), forKey: "customer_notifications")
                 
-                ModelManager.getInstance().deleteAll("customer")
-                ModelManager.getInstance().insert("customer", valuesDictionary: values)
-                
-                GlobalVar.deviceID = json_response.value(forKey: "customer_id")as! String
-                GlobalVar.deviceCode = json_response.value(forKey: "customer_code")as! String
-                GlobalVar.devicePassword = self.txtPassword.text as! String
-                
-                //GlobalVar.deviceTokenString = json_response.value(forKey: "my_customer_key") as! String
-                GlobalVar.deviceLang = ""
-                
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-                
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                
-                OperationQueue.main.addOperation {
                     self.btnSubmit.isEnabled = true
                     self.txtUsername.isEnabled = true
                     self.txtPassword.isEnabled = true
@@ -187,7 +190,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
             alertController.addAction(OKAction)
             
-            OperationQueue.main.addOperation {
+            DispatchQueue.main.asyncAfter(deadline: .now()+5) {
                 self.btnSubmit.isEnabled = true
                 self.txtUsername.isEnabled = true
                 self.txtPassword.isEnabled = true
@@ -204,6 +207,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
 }

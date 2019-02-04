@@ -97,6 +97,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         registerForPushNotifications()
         
+        if (Util.existFile("az.sqlite")){
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+            let initialViewController : MainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+            
+        }
+        
         return true
     }
 
@@ -137,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print("Device Token: \(deviceTokenString)")
     }
-    
+        
     func application(_ application: UIApplication,didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error)")
     }
