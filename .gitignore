@@ -1,0 +1,39 @@
+# Xcode
+DerivedData/
+build/
+*.xcworkspace
+!default.xcworkspace
+*.xcuserdatad
+*.xcscmblueprint
+
+# Swift Package Manager
+Packages/
+.swiftpm/
+.build/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# Xcode temporary files
+*.moved-aside
+*.xcuserstate
+*.xcsettings
+*.hmap
+
+# Xcode logs
+*.log
+
+# Mac system files
+.DS_Store
+
+# Optional: Archives
+*.xcarchive
+
+# Optional: Playgrounds
+timeline.xctimeline
+playground.xcworkspace
