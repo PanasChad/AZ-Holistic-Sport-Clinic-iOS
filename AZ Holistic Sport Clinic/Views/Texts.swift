@@ -30,237 +30,7 @@ class Texts: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-
-        
-        let values:NSDictionary =  ModelManager.getInstance().line("SELECT * FROM `texts` WHERE texts_id = " + String(n_type ?? 1))
-        
-        //We need to call URL and get last data
-        if (values.allKeys.count == 0){
-            if !Reachability.isConnectedToNetwork(){
-                return
-            }
-            
-            var parameters_arr: [String:AnyObject] = [:]
-            
-            /*ALWAYS NEED THEM FOR CHECK*/
-            parameters_arr["username"] =  GlobalVar.deviceUsername as AnyObject?
-            parameters_arr["password"] = GlobalVar.devicePassword as AnyObject?
-            
-            parameters_arr["need_datetime"] = "false" as AnyObject
-            parameters_arr["text_type"] = self.n_type as AnyObject?
-            
-            
-            do{
-                try HTTP.POST(GlobalVar.URL+"gym_texts.php", parameters:parameters_arr){ response in
-                    //do things...
-                    
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                    Swift.debugPrint(response.text)
-                    
-                    if (response.text == ""){
-                        return
-                    }
-                    
-                    if let err = response.error {
-                        Swift.debugPrint("Error: \(err.localizedDescription)")
-                        
-                        return //also notify app of failure as needed
-                    }
-                    
-                    let json_response : NSDictionary = Util.nsdataToJSON(response.text!.data(using: String.Encoding.utf8)!)!
-                    
-                    let values : NSMutableDictionary = NSMutableDictionary()
-                    values.setValue(json_response.value(forKey: "texts_id") as! String, forKey: "texts_id")
-                    values.setValue(json_response.value(forKey: "texts_title") as! String, forKey: "texts_title")
-                    values.setValue(json_response.value(forKey: "texts_text_en") as! String, forKey: "texts_text_en")
-                    values.setValue(json_response.value(forKey: "texts_text_el") as! String, forKey: "texts_text_el")
-                    values.setValue(json_response.value(forKey: "texts_modified_date") as! String, forKey: "texts_modified_date")
-                    
-                    ModelManager.getInstance().deleteAll("texts")
-                    ModelManager.getInstance().insert("texts", valuesDictionary: values)
-                    
-                    self.n_body = json_response.value(forKey: "texts_text_"+GlobalVar.deviceLang) as! String
-                    
-                    OperationQueue.main.addOperation {
-                        if (self.traitCollection.userInterfaceStyle == .dark) {
-                            self.n_body = "<style>body{font-size:20px; color:#ffffff; font-family: 'Arial';}</style>" + self.n_body!
-                        }else{
-                            self.n_body = "<style>body{font-size:20px; color:#555555; font-family: 'Arial';}</style>" +
-                                self.n_body!
-                        }
-                        
-                        let baseFont = UIFont.systemFont(ofSize: self.font_size)
-
-                        if let attrString = attributedStringFromHTML(self.n_body ?? "", baseFont: baseFont) {
-                            self.lblBody.attributedText = attrString
-                        }
-                        
-                        
-                    }
-                }
-            } catch let error {
-                Swift.debugPrint("Got an error creating the request: \(error)")
-                
-                
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }else{
-            if !Reachability.isConnectedToNetwork(){
-                self.n_body = values.value(forKey: "texts_text_"+GlobalVar.deviceLang) as! String
-                
-                OperationQueue.main.addOperation {
-                    if (self.traitCollection.userInterfaceStyle == .dark) {
-                        self.n_body = "<style>body{font-size:20px; color:#ffffff; font-family: 'Arial';}</style>" + self.n_body!
-                    }else{
-                        self.n_body = "<style>body{font-size:20px; color:#555555; font-family: 'Arial';}</style>" +
-                            self.n_body!
-                    }
-                    
-                    self.lblBody?.attributedText = self.n_body?.htmlAttributedString()
-                }
-            }else{
-                
-                var parameters_arr: [String:AnyObject] = [:]
-                
-                /*ALWAYS NEED THEM FOR CHECK*/
-                parameters_arr["username"] =  GlobalVar.deviceUsername as AnyObject?
-                parameters_arr["password"] = GlobalVar.devicePassword as AnyObject?
-                
-                parameters_arr["need_datetime"] = "true" as AnyObject
-                parameters_arr["text_type"] = self.n_type as AnyObject?
-                
-                
-                do{
-                    try HTTP.POST(GlobalVar.URL+"gym_texts.php", parameters:parameters_arr){ response in
-                        //do things...
-                        
-                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                        //Swift.debugPrint(response.text)
-                        
-                        if (response.text == ""){
-                            return
-                        }
-                        
-                        if let err = response.error {
-                            Swift.debugPrint("Error: \(err.localizedDescription)")
-                            
-                            return //also notify app of failure as needed
-                        }
-                        
-                        let json_response : NSDictionary = Util.nsdataToJSON(response.text!.data(using: String.Encoding.utf8)!)!
-                        
-                        //We dont need update
-                        if (json_response.value(forKey: "texts_modified_date") as! String != "0000-00-00 00:00:00" && json_response.value(forKey: "texts_modified_date") as! String == values.value(forKey: "texts_modified_date") as! String){
-                            self.n_body = values.value(forKey: "texts_text_"+GlobalVar.deviceLang) as! String
-                            
-                            OperationQueue.main.addOperation {
-                                if (self.traitCollection.userInterfaceStyle == .dark) {
-                                    self.n_body = """
-                                    <style>
-                                    body {
-                                        font-size: 20px;
-                                        color: #ffffff;
-                                        font-family: 'Arial';
-                                        line-height: 1.4;
-                                    }
-                                    </style>
-                                    """ + self.n_body!
-                                    
-                                }else{
-                                    self.n_body = """
-                                    <style>
-                                    body {
-                                        font-size: 20px;
-                                        color: #000000;
-                                        font-family: 'Arial';
-                                        line-height: 1.4;
-                                    }
-                                    </style>
-                                    """ + self.n_body!
-                                }
-                                
-                                
-                                let baseFont = UIFont.systemFont(ofSize: self.font_size)
-
-                                if let attrString = attributedStringFromHTML(self.n_body ?? "", baseFont: baseFont) {
-                                    self.lblBody?.attributedText = attrString
-                                }
-                            }
-                            //We need to download last update
-                        }else{
-                            var parameters_arr: [String:AnyObject] = [:]
-                            
-                            /*ALWAYS NEED THEM FOR CHECK*/
-                            parameters_arr["username"] =  GlobalVar.deviceUsername as AnyObject?
-                            parameters_arr["password"] = GlobalVar.devicePassword as AnyObject?
-                            
-                            parameters_arr["need_datetime"] = "false" as AnyObject
-                            parameters_arr["text_type"] = self.n_type as AnyObject?
-                            
-                            
-                            do{
-                                try HTTP.POST(GlobalVar.URL+"gym_texts.php", parameters:parameters_arr){ response in
-                                    //do things...
-                                    
-                                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                                    Swift.debugPrint(response.text)
-                                    
-                                    if (response.text == ""){
-                                        return
-                                    }
-                                    
-                                    if let err = response.error {
-                                        Swift.debugPrint("Error: \(err.localizedDescription)")
-                                        
-                                        return //also notify app of failure as needed
-                                    }
-                                    
-                                    let json_response : NSDictionary = Util.nsdataToJSON(response.text!.data(using: String.Encoding.utf8)!)!
-                                    
-                                    let values : NSMutableDictionary = NSMutableDictionary()
-                                    let whereDict : NSMutableDictionary = NSMutableDictionary()
-                                    whereDict.setValue(json_response.value(forKey: "texts_id") as! String, forKey: "texts_id")
-                                    values.setValue(json_response.value(forKey: "texts_title") as! String, forKey: "texts_title")
-                                    values.setValue(json_response.value(forKey: "texts_text_en") as! String, forKey: "texts_text_en")
-                                    values.setValue(json_response.value(forKey: "texts_text_el") as! String, forKey: "texts_text_el")
-                                    values.setValue(json_response.value(forKey: "texts_modified_date") as! String, forKey: "texts_modified_date")
-                                    
-                                    ModelManager.getInstance().update("text", valuesDictionary: values, whereDictionary: whereDict)
-                                    
-                                    self.n_body = json_response.value(forKey: "texts_text_"+GlobalVar.deviceLang) as! String
-                                    
-                                    OperationQueue.main.addOperation {
-                                        if (self.traitCollection.userInterfaceStyle == .dark) {
-                                            self.n_body = "<style>body{font-size:20px; color:#ffffff; font-family: 'Arial';}</style>" + self.n_body!
-                                        }else{
-                                            self.n_body = "<style>body{font-size:20px; color:#555555; font-family: 'Arial';}</style>" +
-                                                self.n_body!
-                                        }
-                                        
-                                        self.lblBody?.attributedText = self.n_body?.htmlAttributedString()
-                                    }
-                                    
-                                }
-                            } catch let error {
-                                Swift.debugPrint("Got an error creating the request: \(error)")
-                                
-                                
-                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                            }
-                        }
-                        
-                        
-                        
-                    }
-                } catch let error {
-                    Swift.debugPrint("Got an error creating the request: \(error)")
-                    
-                    
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            }
-        }
+        loadData()
         
         if (n_type == 1){
             self.navigationItem.title = NSLocalizedString("GDPR", comment: "GDPR")
@@ -273,61 +43,137 @@ class Texts: UIViewController {
         }else if(n_type == 5){
             self.navigationItem.title = NSLocalizedString("TRAINERS", comment: "TRAINERS")
         }
-        
-        
     }
     
+    private func loadData() {
+        let values:NSDictionary = ModelManager.getInstance().line("SELECT * FROM `texts` WHERE texts_id = " + String(n_type ?? 1))
+        
+        if (values.allKeys.count == 0){
+            if !Reachability.isConnectedToNetwork(){ return }
+            
+            var parameters_arr: [String:AnyObject] = [:]
+            parameters_arr["username"] = GlobalVar.deviceUsername as AnyObject?
+            parameters_arr["password"] = GlobalVar.devicePassword as AnyObject?
+            parameters_arr["need_datetime"] = "false" as AnyObject
+            parameters_arr["text_type"] = self.n_type as AnyObject?
+            
+            do {
+                try HTTP.POST(GlobalVar.URL+"gym_texts.php", parameters:parameters_arr) { response in
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    if response.text == "" { return }
+                    if let err = response.error { return }
+                    
+                    let json_response : NSDictionary = Util.nsdataToJSON(response.text!.data(using: String.Encoding.utf8)!)!
+                    let values : NSMutableDictionary = NSMutableDictionary()
+                    values.setValue(json_response.value(forKey: "texts_id") as! String, forKey: "texts_id")
+                    values.setValue(json_response.value(forKey: "texts_title") as! String, forKey: "texts_title")
+                    values.setValue(json_response.value(forKey: "texts_text_en") as! String, forKey: "texts_text_en")
+                    values.setValue(json_response.value(forKey: "texts_text_el") as! String, forKey: "texts_text_el")
+                    values.setValue(json_response.value(forKey: "texts_modified_date") as! String, forKey: "texts_modified_date")
+                    
+                    ModelManager.getInstance().deleteAll("texts")
+                    ModelManager.getInstance().insert("texts", valuesDictionary: values)
+                    
+                    OperationQueue.main.addOperation {
+                        self.n_body = json_response.value(forKey: "texts_text_"+GlobalVar.deviceLang) as? String
+                        self.applyTheme(AppThemeProvider.shared.currentTheme)
+                    }
+                }
+            } catch {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        } else {
+            if !Reachability.isConnectedToNetwork() {
+                self.n_body = values.value(forKey: "texts_text_"+GlobalVar.deviceLang) as? String
+                self.applyTheme(AppThemeProvider.shared.currentTheme)
+            } else {
+                var parameters_arr: [String:AnyObject] = [:]
+                parameters_arr["username"] = GlobalVar.deviceUsername as AnyObject?
+                parameters_arr["password"] = GlobalVar.devicePassword as AnyObject?
+                parameters_arr["need_datetime"] = "true" as AnyObject
+                parameters_arr["text_type"] = self.n_type as AnyObject?
+                
+                do {
+                    try HTTP.POST(GlobalVar.URL+"gym_texts.php", parameters:parameters_arr) { response in
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                        if response.text == "" { return }
+                        if let err = response.error { return }
+                        
+                        let json_response : NSDictionary = Util.nsdataToJSON(response.text!.data(using: String.Encoding.utf8)!)!
+                        
+                        if (json_response.value(forKey: "texts_modified_date") as! String != "0000-00-00 00:00:00" && json_response.value(forKey: "texts_modified_date") as! String == values.value(forKey: "texts_modified_date") as! String) {
+                            OperationQueue.main.addOperation {
+                                self.n_body = values.value(forKey: "texts_text_"+GlobalVar.deviceLang) as? String
+                                self.applyTheme(AppThemeProvider.shared.currentTheme)
+                            }
+                        } else {
+                            var p_arr: [String:AnyObject] = [:]
+                            p_arr["username"] = GlobalVar.deviceUsername as AnyObject?
+                            p_arr["password"] = GlobalVar.devicePassword as AnyObject?
+                            p_arr["need_datetime"] = "false" as AnyObject
+                            p_arr["text_type"] = self.n_type as AnyObject?
+                            
+                            do {
+                                try HTTP.POST(GlobalVar.URL+"gym_texts.php", parameters:p_arr) { resp in
+                                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                                    if resp.text == "" { return }
+                                    
+                                    let j_resp : NSDictionary = Util.nsdataToJSON(resp.text!.data(using: String.Encoding.utf8)!)!
+                                    let v : NSMutableDictionary = NSMutableDictionary()
+                                    let w : NSMutableDictionary = NSMutableDictionary()
+                                    w.setValue(j_resp.value(forKey: "texts_id") as! String, forKey: "texts_id")
+                                    v.setValue(j_resp.value(forKey: "texts_title") as! String, forKey: "texts_title")
+                                    v.setValue(j_resp.value(forKey: "texts_text_en") as! String, forKey: "texts_text_en")
+                                    v.setValue(j_resp.value(forKey: "texts_text_el") as! String, forKey: "texts_text_el")
+                                    v.setValue(j_resp.value(forKey: "texts_modified_date") as! String, forKey: "texts_modified_date")
+                                    
+                                    ModelManager.getInstance().update("text", valuesDictionary: v, whereDictionary: w)
+                                    
+                                    OperationQueue.main.addOperation {
+                                        self.n_body = j_resp.value(forKey: "texts_text_"+GlobalVar.deviceLang) as? String
+                                        self.applyTheme(AppThemeProvider.shared.currentTheme)
+                                    }
+                                }
+                            } catch {
+                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                            }
+                        }
+                    }
+                } catch {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+            }
+        }
+    }
 }
 
 extension Texts: Themed {
     func applyTheme(_ theme: AppTheme) {
+        guard isViewLoaded else { return }
+        
         view.backgroundColor = theme.backgroundColor
-        
-        //titleLabel.textColor = theme.textColor
-        //subtitleLabel.textColor = theme.textColor
         lblBody.textColor = theme.textColor
-        
-        if (theme.textColor == .white ){
-            if (n_body != nil){
-                n_body = """
-                <style>
-                body {
-                    font-size: 20px;
-                    color: #ffffff;
-                    font-family: 'Arial';
-                    line-height: 1.4;
-                }
-                </style>
-                """ + n_body!
-                
-                lblBody?.attributedText = n_body?.htmlAttributedString()
-            }
-        }else{
-            if (n_body != nil){
-                n_body = """
-                <style>
-                body {
-                    font-size: 20px;
-                    color: #000000;
-                    font-family: 'Arial';
-                    line-height: 1.4;
-                }
-                </style>
-                """ + n_body!
-                lblBody?.attributedText = n_body?.htmlAttributedString()
-            
-            }
-        }
-        
-        let baseFont = UIFont.systemFont(ofSize: font_size)
-
-        if let attrString = attributedStringFromHTML(n_body ?? "", baseFont: baseFont) {
-            lblBody.attributedText = attrString
-        }
-        
-        
-        
         lblBody.backgroundColor = theme.backgroundColor
+
+        let colorHex = theme.textColor == .white ? "#ffffff" : "#555555"
+        
+        if let body = n_body {
+            let styledBody = """
+            <style>
+            body {
+                font-size: 20px;
+                color: \(colorHex);
+                font-family: 'Arial';
+                line-height: 1.4;
+            }
+            </style>
+            """ + body
+            
+            let baseFont = UIFont.systemFont(ofSize: font_size)
+            if let attrString = attributedStringFromHTML(styledBody, baseFont: baseFont) {
+                lblBody.attributedText = attrString
+            }
+        }
     }
 }
 

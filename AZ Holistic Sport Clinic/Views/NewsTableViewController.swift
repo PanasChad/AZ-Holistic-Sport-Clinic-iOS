@@ -171,6 +171,8 @@ final class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpTheming()
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
                 
@@ -315,5 +317,13 @@ final class NewsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
+    }
+}
+
+extension NewsTableViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        tableView.backgroundColor = theme.backgroundColor
+        tableView.reloadData()
     }
 }

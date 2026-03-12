@@ -14,15 +14,6 @@ class Evaluation: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
-            }else{
-                self.themeProvider.currentTheme = .light
-            }
-        }
 
         data = ModelManager.getInstance().line("SELECT * FROM customer_lipometry_evaluation")
         

@@ -19,6 +19,17 @@ class DietNoteTableViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableView.automaticDimension
+        
+        var hasAnyData = false
+        if let target = data.value(forKey: "diet_customer_target") as? String, !target.isEmpty { hasAnyData = true }
+        if let suppl = data.value(forKey: "diet_customer_supplements") as? String, !suppl.isEmpty { hasAnyData = true }
+        if let note = data.value(forKey: "diet_customer_note") as? String, !note.isEmpty { hasAnyData = true }
+        
+        if hasAnyData {
+            tableView.clearBackground()
+        } else {
+            tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
+        }
             
         self.tableView.reloadData()
     }
@@ -26,6 +37,7 @@ class DietNoteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpTheming()
         
         self.tableView.tableFooterView = UIView()
     }
@@ -37,48 +49,23 @@ class DietNoteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            if (data.value(forKey: "diet_customer_target") != nil){
-                if (data.value(forKey: "diet_customer_target") as! String != ""){
-                    tableView.clearBackground()
-                    return 1
-                }else{
-                    tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
-                }
-            }else{
-                tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
+            if let target = data.value(forKey: "diet_customer_target") as? String, !target.isEmpty {
+                return 1
             }
-            break;
+            return 0
         case 1:
-            if (data.value(forKey: "diet_customer_supplements") != nil){
-                if (data.value(forKey: "diet_customer_supplements") as! String != ""){
-                    tableView.clearBackground()
-                    return 1
-                }else{
-                    tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
-                }
-            }else{
-                tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
+            if let suppl = data.value(forKey: "diet_customer_supplements") as? String, !suppl.isEmpty {
+                return 1
             }
-            break;
+            return 0
         case 2:
-            if (data.value(forKey: "diet_customer_note") != nil){
-                if (data.value(forKey: "diet_customer_note") as! String != ""){
-                    tableView.clearBackground()
-                    return 1
-                }else{
-                    tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
-                }
-            }else{
-                tableView.setMessage(NSLocalizedString("Noresults", comment: "Noresults"))
+            if let note = data.value(forKey: "diet_customer_note") as? String, !note.isEmpty {
+                return 1
             }
-            break;
+            return 0
         default:
             return 0
-            
-            break;
         }
-        
-        return 0
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -194,10 +181,17 @@ class DietNoteTableViewController: UITableViewController {
         }
         
         
-        let n_body = "<style>body{font-size:13px; color:#555555; font-family: '"+UIFont.systemFont(ofSize: 13).familyName+"';}</style>" + text
+        var colorHex = "#555555"
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                colorHex = "#FFFFFF"
+            }
+        }
+        
+        let n_body = "<style>body{font-size:13px; color:" + colorHex + "; font-family: '"+UIFont.systemFont(ofSize: 13).familyName+"';}</style>" + text
         
         cell.textLabel?.attributedText = n_body.htmlAttributedString()
-        cell.textLabel?.textAlignment = NSTextAlignment.center
+        cell.textLabel?.textAlignment = .left
         cell.textLabel?.font = italicFont
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
@@ -205,11 +199,25 @@ class DietNoteTableViewController: UITableViewController {
         cell.textLabel?.isUserInteractionEnabled = true
         cell.textLabel?.sizeToFit()
         
+        if #available(iOS 13.0, *) {
+            cell.textLabel?.textColor = self.traitCollection.userInterfaceStyle == .dark ? .white : .black
+        }
+        
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = .clear
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel?.textColor = themeProvider.currentTheme.textColor
+            header.contentView.backgroundColor = themeProvider.currentTheme.backgroundColor
+        }
     }
 }
 
@@ -217,6 +225,12 @@ extension DietNoteTableViewController: Themed {
     func applyTheme(_ theme: AppTheme) {
         view.backgroundColor = theme.backgroundColor
         tableView.backgroundColor = theme.backgroundColor
+        
+        if let lblMessage = tableView.backgroundView as? UILabel {
+            lblMessage.textColor = theme.textColor
+        }
+        
+        tableView.reloadData()
     }
 }
 
@@ -225,7 +239,7 @@ extension UITableView {
     func setMessage(_ message: String) {
         let lblMessage = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         lblMessage.text = message
-        lblMessage.textColor = .black
+        lblMessage.textColor = AppThemeProvider.shared.currentTheme.textColor
         lblMessage.numberOfLines = 0
         lblMessage.textAlignment = .center
         lblMessage.font = UIFont(name: "TrebuchetMS", size: 15)

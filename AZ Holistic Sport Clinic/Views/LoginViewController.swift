@@ -30,10 +30,8 @@ class  LoginViewController: UIViewController, UITextFieldDelegate {
         if #available(iOS 13.0, *) {
             if self.traitCollection.userInterfaceStyle == .dark {
                 // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
                 self.imgLogo.image = UIImage(named: "a2z-logo")
-            }else{
-                self.themeProvider.currentTheme = .light
+            } else {
                 self.imgLogo.image = UIImage(named: "logo")
             }
         }

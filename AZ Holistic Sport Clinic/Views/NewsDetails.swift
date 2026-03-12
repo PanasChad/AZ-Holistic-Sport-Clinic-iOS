@@ -31,66 +31,44 @@ class NewsDetails: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        lblTitle?.text =   n_title
-        //lblDate?.text =    n_date
-        //lblDate?.text =    ""
-        
-        //let myAttribute = [ NSFontAttributeName: UIFont.systemFont(ofSize: 12) ]
-        //let myAttrString = NSAttributedString(string: answer!, attributes: myAttribute)
-        n_body = "<style>body{font-size:20px; color:#555555; font-family: 'Arial';}</style>" + n_body!
-        
-        lblBody?.attributedText = n_body?.htmlAttributedString()
-        
+        lblTitle?.text = n_title
         self.navigationItem.title = n_date
+        
+        // Initial theme application in case applyTheme was called before outlets were ready
+        if let theme = AppThemeProvider.shared.currentTheme as? AppTheme {
+            applyTheme(theme)
+        }
     }
-    
 }
 
 extension NewsDetails: Themed {
     func applyTheme(_ theme: AppTheme) {
+        guard isViewLoaded else { return }
+        
         view.backgroundColor = theme.backgroundColor
-        
-        //titleLabel.textColor = theme.textColor
-        //subtitleLabel.textColor = theme.textColor
         lblTitle.textColor = theme.textColor
-        //lblDate.textColor = theme.textColor
         lblBody.textColor = theme.textColor
+        lblBody.backgroundColor = theme.backgroundColor
+        lblTitle.backgroundColor = theme.backgroundColor
+
+        let colorHex = theme.textColor == .white ? "#ffffff" : "#555555"
         
-        if theme.textColor == .white {
-            n_body = """
+        if let body = n_body {
+            let styledBody = """
             <style>
             body {
                 font-size: 20px;
-                color: #ffffff;
+                color: \(colorHex);
                 font-family: 'Arial';
                 line-height: 1.4;
             }
             </style>
-            """ + n_body!
-            lblBody?.attributedText = n_body?.htmlAttributedString()
-
-        } else {
-            n_body = """
-            <style>
-            body {
-                font-size: 20px;
-                color: #555555;
-                font-family: 'Arial';
-                line-height: 1.4;
-            }
-            </style>
-            """ + n_body!
-            lblBody?.attributedText = n_body?.htmlAttributedString()
-
+            """ + body
+            lblBody?.attributedText = styledBody.htmlAttributedString()
         }
 
-        
-        lblTitle.backgroundColor = theme.backgroundColor
-        //lblDate.backgroundColor = theme.backgroundColor
-        lblBody.backgroundColor = theme.backgroundColor
-        
         lblTitle.numberOfLines = 2
-        lblTitle.lineBreakMode = .byTruncatingTail // or .byWordWrapping if you prefer wrapping
+        lblTitle.lineBreakMode = .byTruncatingTail
         lblTitle.adjustsFontSizeToFitWidth = true
         lblTitle.minimumScaleFactor = 0.5
     }

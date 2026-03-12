@@ -13,6 +13,15 @@ class AppTabBarController: UITabBarController {
 		super.viewDidLoad()
 		setUpTheming()
 	}
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+                AppThemeProvider.shared.updateThemeFromSystem()
+            }
+        }
+    }
 }
 
 extension AppTabBarController: Themed {

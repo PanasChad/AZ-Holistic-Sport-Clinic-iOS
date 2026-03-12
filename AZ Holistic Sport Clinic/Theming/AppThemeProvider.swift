@@ -83,20 +83,20 @@ final class AppThemeProvider: ThemeProvider {
                 object: nil,
                 queue: .main
             ) { [weak self] _ in
-                self?.checkAndUpdateTheme()
+                self?.updateThemeFromSystem()
             }
             
             // Also check when the app will enter foreground
             NotificationCenter.default.addObserver(
                 self,
-                selector: #selector(checkAndUpdateTheme),
+                selector: #selector(updateThemeFromSystem),
                 name: UIApplication.willEnterForegroundNotification,
                 object: nil
             )
         }
     }
     
-    @objc private func checkAndUpdateTheme() {
+    @objc func updateThemeFromSystem() {
         guard automaticThemeEnabled else { return }
         
         let systemTheme = getCurrentSystemTheme()
@@ -120,14 +120,14 @@ final class AppThemeProvider: ThemeProvider {
                 duration: 0.3,
                 options: [.transitionCrossDissolve],
                 animations: {
-                    self.theme.value = newTheme
                     self.updateNavigationBarAppearance(for: newTheme)
+                    self.theme.value = newTheme
                 },
                 completion: nil
             )
         } else {
-            self.theme.value = newTheme
             self.updateNavigationBarAppearance(for: newTheme)
+            self.theme.value = newTheme
         }
     }
     
@@ -156,12 +156,15 @@ final class AppThemeProvider: ThemeProvider {
                 func updateRecursively(_ vc: UIViewController?) {
                     guard let vc = vc else { return }
                     if let nav = vc as? UINavigationController {
-                        nav.navigationBar.tintColor = theme.barForegroundColor
-                        nav.navigationBar.standardAppearance = appearance
-                        nav.navigationBar.compactAppearance = appearance
-                        nav.navigationBar.scrollEdgeAppearance = appearance
-                        nav.navigationBar.setNeedsLayout()
-                        nav.navigationBar.layoutIfNeeded()
+                        // Skip Home screen as it has its own branding
+                        if !(nav.topViewController is HomeViewController) {
+                            nav.navigationBar.tintColor = theme.barForegroundColor
+                            nav.navigationBar.standardAppearance = appearance
+                            nav.navigationBar.compactAppearance = appearance
+                            nav.navigationBar.scrollEdgeAppearance = appearance
+                            nav.navigationBar.setNeedsLayout()
+                            nav.navigationBar.layoutIfNeeded()
+                        }
                     }
                     vc.children.forEach { updateRecursively($0) }
                     updateRecursively(vc.presentedViewController)

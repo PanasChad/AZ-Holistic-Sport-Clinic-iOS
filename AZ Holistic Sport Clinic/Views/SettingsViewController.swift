@@ -540,15 +540,6 @@ class SettingsViewController: UITableViewController {
             btnLanguage.setTitle("English", for: .normal)
             dropDown.selectRow(at: 0)
         }
-        
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
-            }else{
-                self.themeProvider.currentTheme = .light
-            }
-        }
     }
 
     override func viewDidLoad() {

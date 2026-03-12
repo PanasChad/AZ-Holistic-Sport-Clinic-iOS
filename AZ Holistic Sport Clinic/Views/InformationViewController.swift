@@ -139,14 +139,6 @@ class InformationViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
-            }else{
-                self.themeProvider.currentTheme = .light
-            }
-        }
         print(irthaapobell)
         if irthaapobell != nil && irthaapobell == true {
             self.performSegue(withIdentifier: "show_news", sender: nil)
@@ -169,16 +161,6 @@ class InformationViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
-            }else{
-                self.themeProvider.currentTheme = .light
-            }
-        }
         
         if (show_questionnaire){
             self.performSegue(withIdentifier: "show_questionaire", sender: nil)

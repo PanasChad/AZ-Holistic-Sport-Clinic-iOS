@@ -17,15 +17,6 @@ class DietTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
-            }else{
-                self.themeProvider.currentTheme = .light
-            }
-        }
-        
         if (DietTableViewController.readData){
             data = ModelManager.getInstance().q("SELECT diet_customer_time,diet_customer_title_en,diet_customer_title_el,diet_customer_"+date+"_text as diet_customer_text FROM diet_customer WHERE diet_customer_"+date+"_text != '' AND diet_customer_"+date+"_text != '-' ORDER BY diet_customer_time")
         
@@ -38,6 +29,8 @@ class DietTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpTheming()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -152,13 +145,20 @@ class DietTableViewController: UITableViewController {
         cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.isUserInteractionEnabled = true
+        cell.textLabel?.textColor = themeProvider.currentTheme.textColor
         
     
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel?.textColor = themeProvider.currentTheme.textColor
+        }
     }
 }
 
@@ -167,7 +167,6 @@ extension DietTableViewController: Themed {
         view.backgroundColor = theme.backgroundColor
         tableView.backgroundColor = theme.backgroundColor
         
-        //titleLabel.textColor = theme.textColor
-        //subtitleLabel.textColor = theme.textColor
+        tableView.reloadData()
     }
 }

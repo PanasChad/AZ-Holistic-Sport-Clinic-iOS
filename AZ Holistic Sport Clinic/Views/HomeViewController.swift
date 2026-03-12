@@ -74,17 +74,15 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if #available(iOS 13.0, *) {
-            self.themeProvider.currentTheme = (self.traitCollection.userInterfaceStyle == .dark) ? .dark : .light
-        }
-        
-        if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor(named: "blue_background")
-            appearance.titleTextAttributes = [.foregroundColor:  UIColor(named: "blue_background")]
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
         }
+        navigationController?.navigationBar.tintColor = .white
 
         let bellButton = UIButton(type: .custom)
         bellButton.setImage(UIImage(named: "notification"), for: .normal)
@@ -132,7 +130,7 @@ class HomeViewController: UIViewController {
         ANLoader.activityTextColor = .clear
         ANLoader.viewBackgroundDark = true
         
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor().convertHexStringToColor(GlobalVar.blueColor)]
+        // Nav bar styling handled by theme system
         
         let values:NSDictionary =  ModelManager.getInstance().line("SELECT * FROM customer")
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
@@ -270,7 +268,7 @@ class HomeViewController: UIViewController {
         let trainer:NSDictionary =  ModelManager.getInstance().line("SELECT * FROM others WHERE others_field='trainer_fullname'")
         let trainer_working_hours:NSDictionary =  ModelManager.getInstance().line("SELECT * FROM others WHERE others_field='trainer_working_hours'")
         
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor().convertHexStringToColor(GlobalVar.blueColor)]
+        // Removed legacy nav bar styling that conflicted with theme system
         
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "dd/MM/yyyy HH:mm"
@@ -571,7 +569,35 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: Themed {
     func applyTheme(_ theme: AppTheme) {
-        //view.backgroundColor = theme.backgroundColor
+        // Home screen uses branded blue regardless of theme
+        let blue = UIColor(named: "blue_background")
+        view.backgroundColor = blue
+        
+        // Ensure nav bar stays blue with white text/buttons
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = blue
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+            navigationController?.navigationBar.compactAppearance = appearance
+        }
+        navigationController?.navigationBar.tintColor = .white
+        
+        // Ensure all branded labels stay white on blue
+        let whiteLabels = [
+            lblCustomerName, lblMemberCode, lblEndSubscriptionLabel,
+            lblNextAppointmentLabel, lblTrainer, lblTrainerName,
+            lblTrainerWorkingTime, lblNextAppointment, lblEndSubscription
+        ]
+        whiteLabels.forEach { $0?.textColor = .white }
+
+        // Balance label should stay red
+        lblAmountRemainsLabel.textColor = UIColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0)
+        
+        // Subscription dates handled by show_values() logic for expiry (red vs white)
+        show_values()
     }
 }
 

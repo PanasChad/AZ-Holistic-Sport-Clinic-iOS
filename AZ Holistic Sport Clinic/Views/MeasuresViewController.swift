@@ -705,17 +705,6 @@ class MeasuresViewController: ChartBaseViewController {
         navigationItem.leftBarButtonItem = button
         navigationItem.rightBarButtonItem = self.pdfButton
         
-        self.themeProvider.currentTheme = .light
-        
-        if #available(iOS 13.0, *) {
-            if self.traitCollection.userInterfaceStyle == .dark {
-                // User Interface is Dark
-                self.themeProvider.currentTheme = .dark
-            }else{
-                self.themeProvider.currentTheme = .light
-            }
-        }
-        
         setUpTheming()
         
         // Do any additional setup after loading the view.

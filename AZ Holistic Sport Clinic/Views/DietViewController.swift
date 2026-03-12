@@ -13,6 +13,7 @@ import ANLoader
 
 class DietViewController: SwipeMenuViewController {
     
+    private var currentDietDay: Int = 0
     private var dates: [String] = [NSLocalizedString("Monday",comment:"Monday"),NSLocalizedString("Tuesday",comment:"Tuesday"),NSLocalizedString("Wednesday",comment:"Wednesday"),NSLocalizedString("Thursday",comment:"Thursday"),NSLocalizedString("Friday",comment:"Friday"),NSLocalizedString("Saturday",comment:"Saturday"),NSLocalizedString("Sunday",comment:"Sunday")]
     
     var options = SwipeMenuViewOptions()
@@ -350,6 +351,7 @@ class DietViewController: SwipeMenuViewController {
     }
     
     private func reload( date: Int) {
+        self.currentDietDay = date
         swipeMenuView.reloadData(options: options, default: date, isOrientationChange: false)
     }
     
@@ -368,6 +370,7 @@ class DietViewController: SwipeMenuViewController {
     
     override func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         super.swipeMenuView(swipeMenuView, didChangeIndexFrom: fromIndex, to: toIndex)
+        self.currentDietDay = toIndex
     }
 
     // MARK - SwipeMenuViewDataSource
@@ -439,6 +442,9 @@ extension DietViewController: Themed {
         options.tabView.backgroundColor = theme.backgroundColor
         options.tabView.itemView.selectedTextColor = theme.textBlueColor
         options.tabView.additionView.backgroundColor = theme.textBlueColor
+        options.tabView.itemView.textColor = theme.textColor
+        
+        self.reload(date: currentDietDay)
     }
 }
 

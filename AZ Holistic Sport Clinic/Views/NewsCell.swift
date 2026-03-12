@@ -19,16 +19,22 @@ final class NewsCell: UITableViewCell, Reusable
     
     var n_body: String?
     func fill(_ date: String, title: String, isRead: Bool, body: String) {
+        let theme = AppThemeProvider.shared.currentTheme
+        
         lblDate.text = formatRelativeDate(from: date)
         lblTitle.text = title
+        lblTitle.textColor = theme.textColor
+        lblDate.textColor = theme.textColor
 
         // Prepare HTML like in NewsDetails
         n_body = body
+        let colorHex = (theme.textColor == .white) ? "#FFFFFF" : "#9c9c9d"
+        
         let style = """
         <style>
         body {
             font-size: 16px;
-            color: #9c9c9d;
+            color: \(colorHex);
             font-family: 'Arial';
             line-height: 1.4;
         }
