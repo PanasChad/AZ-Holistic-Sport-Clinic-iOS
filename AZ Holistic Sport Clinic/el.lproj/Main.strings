@@ -1,0 +1,214 @@
+
+/* Class = "UITabBarItem"; title = "Information"; ObjectID = "1Tr-9z-kDz"; */
+"1Tr-9z-kDz.title" = "Πληροφορίες";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "2os-2G-ZTH"; */
+"2os-2G-ZTH.placeholder" = "Τίτλος";
+
+/* Class = "UINavigationItem"; title = "MEASURES"; ObjectID = "5NB-SR-vLV"; */
+"5NB-SR-vLV.title" = "Μετρήσεις";
+
+/* Class = "UINavigationItem"; title = "PROFILE"; ObjectID = "5cW-jh-g59"; */
+"5cW-jh-g59.title" = "Προφίλ";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 8"; ObjectID = "5e2-gV-MLL"; */
+"5e2-gV-MLL.headerTitle" = "Question 8";
+
+/* Class = "UINavigationItem"; title = "INFORMATION"; ObjectID = "66d-aw-WcE"; */
+"66d-aw-WcE.title" = "Πληροφορίες";
+
+/* Class = "UINavigationItem"; title = "DIET"; ObjectID = "9DW-pw-JOv"; */
+"9DW-pw-JOv.title" = "Διατροφή";
+
+/* Class = "UILabel"; text = "24/02/2019"; ObjectID = "AkH-4W-s7l"; */
+"AkH-4W-s7l.text" = "24/02/2019";
+
+/* Class = "UITableViewController"; title = "PROFILE"; ObjectID = "BdU-ll-8Uj"; */
+"BdU-ll-8Uj.title" = "Προφίλ";
+
+/* Class = "UITableViewController"; title = "QUESTIONAIRE"; ObjectID = "F3w-f0-sVd"; */
+"F3w-f0-sVd.title" = "Ερωτηματολόγιο";
+
+/* Class = "UITabBarItem"; title = "Diet"; ObjectID = "FB2-9v-yWM"; */
+"FB2-9v-yWM.title" = "Διατροφή";
+
+/* Class = "UINavigationController"; title = "INFORMATION"; ObjectID = "FD2-5W-TNc"; */
+"FD2-5W-TNc.title" = "Πληροφορίες";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 2"; ObjectID = "FED-3X-hho"; */
+"FED-3X-hho.headerTitle" = "Question 2";
+
+/* Class = "UITabBarItem"; title = "Diet"; ObjectID = "Kin-DI-4YM"; */
+"Kin-DI-4YM.title" = "Διατροφή";
+
+/* Class = "UILabel"; text = "Notifications"; ObjectID = "MHI-S8-5DW"; */
+"MHI-S8-5DW.text" = "Ειδοποιήσεις";
+
+/* Class = "UINavigationItem"; title = "HOME"; ObjectID = "MdH-Dk-pij"; */
+"MdH-Dk-pij.title" = "Αρχική";
+
+/* Class = "UITextField"; placeholder = "Subject"; ObjectID = "MwM-bV-Cyc"; */
+"MwM-bV-Cyc.placeholder" = "Θέμα";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 3"; ObjectID = "Owb-e2-5Ve"; */
+"Owb-e2-5Ve.headerTitle" = "Question 3";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pzf-ie-BQy"; */
+"Pzf-ie-BQy.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "QDW-on-EcN"; */
+"QDW-on-EcN.title" = "Αρχική";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "R4X-MA-pw3"; */
+"R4X-MA-pw3.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Rie-vT-kBB"; */
+"Rie-vT-kBB.normalTitle" = "Σύνδεση";
+
+/* Class = "UITableViewSection"; headerTitle = "Note"; ObjectID = "S0N-7G-Tq5"; */
+"S0N-7G-Tq5.headerTitle" = "Σημείωση";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 4"; ObjectID = "TDx-GO-sCt"; */
+"TDx-GO-sCt.headerTitle" = "Question 4";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "THP-q8-Q6y"; */
+"THP-q8-Q6y.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "TMJ-Qj-etH"; */
+"TMJ-Qj-etH.headerTitle" = "Ρυθμίσεις";
+
+/* Class = "UILabel"; text = "SUBSCRIPTION'S END DATE"; ObjectID = "VMk-Dl-0WT"; */
+"VMk-Dl-0WT.text" = "Λήξη Συνδρομής";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[0] = "Weight"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[0]" = "Βάρος";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[1] = "Fat Masss"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[1]" = "Λίπος %";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[2] = "Muscle Mass"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[2]" = "Μυική Μάζα";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[3] = "Visceral Fat"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[3]" = "Σπλαχνικό Λίπος";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 5"; ObjectID = "XCV-Mx-Vc5"; */
+"XCV-Mx-Vc5.headerTitle" = "Question 5";
+
+/* Class = "UILabel"; text = "Customer ID"; ObjectID = "Xou-PD-30e"; */
+"Xou-PD-30e.text" = "Αριθμός Πελάτη";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "aQq-q8-OUs"; */
+"aQq-q8-OUs.text" = "Όνομα χρήστη";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Αρχική";
+
+"PtR-uy-03T.title" = "Αίτημα Ραντεβού";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 7"; ObjectID = "bPE-ww-jEr"; */
+"bPE-ww-jEr.headerTitle" = "Question 7";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 6"; ObjectID = "cxg-sX-Qno"; */
+"cxg-sX-Qno.headerTitle" = "Question 6";
+
+/* Class = "UILabel"; text = "Andreas Zachariou"; ObjectID = "f6B-Z5-OSR"; */
+"f6B-Z5-OSR.text" = "AZ Holistic Sports Clinic";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 1"; ObjectID = "fBJ-8Q-YiC"; */
+"fBJ-8Q-YiC.headerTitle" = "Question 1";
+
+/* Class = "UILabel"; text = "Contact"; ObjectID = "fH8-cz-ZOp"; */
+"fH8-cz-ZOp.text" = "Οδηγίες Εκγύμνασης";
+
+"0Vm-Er-h26.text" = "Επικοινωνία";
+
+/* Class = "UILabel"; text = "*** If you want to not answer a question please don't fill the stars"; ObjectID = "g0P-qR-VwW"; */
+"g0P-qR-VwW.text" = "*** Εάν δεν θέλετε να απαντήσετε σε κάποια ερώτηση, παρακαλώ μην επιλέξετε τα αστέρια";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "gnu-E7-lnn"; */
+"gnu-E7-lnn.text" = "Κωδικός";
+
+/* Class = "UILabel"; text = "€ 50.00"; ObjectID = "jSq-lW-hOm"; */
+"jSq-lW-hOm.text" = "€ 50.00";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "jWc-oQ-GND"; */
+"jWc-oQ-GND.text" = "Γλώσσα";
+
+/* Class = "UILabel"; text = "CHECK IN"; ObjectID = "kUF-fJ-Fei"; */
+"kUF-fJ-Fei.text" = "CHECK IN";
+
+/* Class = "UILabel"; text = "6 κοφτές κ.Σ βρώμη ή 3 weetabix + 1φλ γάλα ημιάπαχο + 1 ισοδύναμο φρούτου"; ObjectID = "kfo-nj-NkQ"; */
+"kfo-nj-NkQ.text" = "6 κοφτές κ.Σ βρώμη ή 3 weetabix + 1φλ γάλα ημιάπαχο + 1 ισοδύναμο φρούτου";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "l5k-fA-yM8"; */
+"l5k-fA-yM8.text" = "Label";
+
+/* Class = "UILabel"; text = "02/02/2000"; ObjectID = "lSa-8v-MjY"; */
+"lSa-8v-MjY.text" = "02/02/2000";
+
+/* Class = "UITableViewController"; title = "NEWS"; ObjectID = "mbE-Fs-ynN"; */
+"mbE-Fs-ynN.title" = "Νέα / Ειδοποιήσεις";
+
+/* Class = "UIButton"; normalTitle = "Synch Now"; ObjectID = "nkF-ai-9UO"; */
+"nkF-ai-9UO.normalTitle" = "Συγχρονισμός Τώρα";
+
+/* Class = "UITabBarItem"; title = "Measures"; ObjectID = "qJh-5W-9TF"; */
+"qJh-5W-9TF.title" = "Μετρήσεις";
+
+/* Class = "UITableViewController"; title = "CONTACT"; ObjectID = "qoE-5q-2U9"; */
+"qoE-5q-2U9.title" = "Επικοινωνία";
+
+/* Class = "UILabel"; text = "REMAINS AMOUNT"; ObjectID = "reL-3h-afy"; */
+"reL-3h-afy.text" = "Εκκρεμεί Υπόλοιπο";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "rla-d1-0SX"; */
+"rla-d1-0SX.title" = "Προφίλ";
+
+/* Class = "UILabel"; text = "1000"; ObjectID = "x5N-CE-agq"; */
+"x5N-CE-agq.text" = "1000";
+
+/* Class = "UILabel"; text = "NEXT APPOINTMENT"; ObjectID = "xvi-Yw-JFQ"; */
+"xvi-Yw-JFQ.text" = "Επόμενη Συνάντηση";
+
+/* Class = "UITabBarItem"; title = "Measures"; ObjectID = "yqE-zp-oZb"; */
+"yqE-zp-oZb.title" = "Μετρήσεις";
+
+/* Class = "UILabel"; text = "Questionaire"; ObjectID = "zQX-HO-UDD"; */
+"zQX-HO-UDD.text" = "Ερωτηματολόγιο";
+
+/* Class = "UILabel"; text = "News"; ObjectID = "zRd-o2-jIi"; */
+"zRd-o2-jIi.text" = "Νέα / Ειδοποιήσεις";
+
+"0dL-By-yrv.text" = "Τελευταίος Συγχρονισμός";
+
+"FR4-Vg-SLk.text" = "Τηλέφωνο 70003400";
+
+"8dB-gD-Prj.text" = "Νυχτερινή Λειτουργία";
+
+"oN3-tX-1ic.text" = "Τίτλος";
+
+"snn-Rc-Ggb.text" = "Κείμενο";
+
+"rdF-mB-gQH.title" = "Προνόμια Μέλους";
+
+"qaY-T7-VJR.title" = "Παράπονα / Εισηγήσεις";
+
+"CLq-Q8-YMR.text" = "Δεν Ισχύει";
+
+"UhE-GA-R5d.normalTitle" = "ΚΛΗΣΗ PARKING";
+
+"jWN-jI-S5d.text" = "Γυμναστές";
+"NGP-D0-smJ.text" = "Όροι Πληρωμών";
+"sq7-lf-4bt.text" = "Κανόνες Υγιεινής διατροφής";
+"KBO-wz-U6h.text" = "Όροι και Κανόνες";
+
+"lgg-yn-zFW.text" = "Αίτημα Ραντεβού";
+
+/* Class = "UILabel"; text = "Trainer"; ObjectID = "Vir-aE-bwQ"; */
+"Vir-aE-bwQ.text" = "Γυμναστής";
+
+"fe7-iu-CnA.text" = "Γυμναστής";
+"jMf-cr-Hoc.text" = "Ωράριο";
+
+"buf-QV-G4v.text" = "Κανόνες Μέτρησης";

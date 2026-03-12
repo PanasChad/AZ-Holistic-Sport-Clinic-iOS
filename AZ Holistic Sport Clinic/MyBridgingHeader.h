@@ -12,5 +12,6 @@
 #import "../Pods/FMDB/src/fmdb/FMDB.h"
 
 #import <CommonCrypto/CommonCrypto.h>
+#import <SDWebImage/SDWebImage.h>
 
 #endif /* MyBridgingHeader_h */

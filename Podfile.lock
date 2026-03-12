@@ -1,0 +1,102 @@
+PODS:
+  - ANLoader (2.0.0)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
+  - Cosmos (18.0.1)
+  - DropDown (2.3.13)
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
+  - KeychainAccess (3.1.2)
+  - ReachabilitySwift (5.2.4)
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
+  - RSBarcodes_Swift (4.2.1)
+  - SCLAlertView (0.8)
+  - ScrollableGraphView (4.0.6)
+  - SDWebImage (5.21.0):
+    - SDWebImage/Core (= 5.21.0)
+  - SDWebImage/Core (5.21.0)
+  - SQLite.swift (0.11.6):
+    - SQLite.swift/standard (= 0.11.6)
+  - SQLite.swift/standard (0.11.6)
+  - SwiftAlgorithms (1.0.0)
+  - SwiftHTTP (3.0.1)
+  - SwiftyJSON (4.3.0)
+  - SwipeMenuViewController (3.0.0)
+
+DEPENDENCIES:
+  - ANLoader (from `https://github.com/ANSCoder/ANLoader.git`)
+  - Charts
+  - Cosmos (~> 18.0)
+  - DropDown (~> 2.3.12)
+  - FMDB (~> 2.7.12)
+  - KeychainAccess (~> 3.1.2)
+  - ReachabilitySwift (~> 5.2.4)
+  - Reusable (~> 4.0.5)
+  - RSBarcodes_Swift (~> 4.2.1)
+  - SCLAlertView (~> 0.8)
+  - ScrollableGraphView (~> 4.0.5)
+  - SDWebImage (~> 5.0)
+  - SQLite.swift (~> 0.11.5)
+  - SwiftHTTP (~> 3.0.1)
+  - SwiftyJSON (~> 4.3.0)
+  - SwipeMenuViewController (~> 3.0.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Charts
+    - Cosmos
+    - DropDown
+    - FMDB
+    - KeychainAccess
+    - ReachabilitySwift
+    - Reusable
+    - RSBarcodes_Swift
+    - SCLAlertView
+    - ScrollableGraphView
+    - SDWebImage
+    - SQLite.swift
+    - SwiftAlgorithms
+    - SwiftHTTP
+    - SwiftyJSON
+    - SwipeMenuViewController
+
+EXTERNAL SOURCES:
+  ANLoader:
+    :git: https://github.com/ANSCoder/ANLoader.git
+
+CHECKOUT OPTIONS:
+  ANLoader:
+    :commit: b45b12600a4dc693b83d88640e24ca0bb545fa79
+    :git: https://github.com/ANSCoder/ANLoader.git
+
+SPEC CHECKSUMS:
+  ANLoader: 25f4ed93f5d13678eb72a38c2f674acfcaba8205
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
+  Cosmos: 7dfaa3f52584ca5f94ab74b5c2e264019cc9f7f5
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  ReachabilitySwift: 32793e867593cfc1177f5d16491e3a197d2fccda
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
+  RSBarcodes_Swift: c58d107e6d2149cc34a23f02828d400dbb708101
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
+  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
+  SQLite.swift: 46d890be8601964454bd3392527f863d1b802d45
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+  SwiftHTTP: e94f1aa8cde58637dcc0100f6349de31a3337fde
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwipeMenuViewController: 572a6fcd7fa95c3d744c760d5e836896817c5735
+
+PODFILE CHECKSUM: 07868217a1aefc609ff7675f097d9ca37852262c
+
+COCOAPODS: 1.15.2

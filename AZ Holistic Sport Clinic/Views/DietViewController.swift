@@ -9,17 +9,40 @@
 import UIKit
 import SwiftHTTP
 import SwipeMenuViewController
+import ANLoader
 
 class DietViewController: SwipeMenuViewController {
     
-    private var dates: [String] = ["Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    private var dates: [String] = [NSLocalizedString("Monday",comment:"Monday"),NSLocalizedString("Tuesday",comment:"Tuesday"),NSLocalizedString("Wednesday",comment:"Wednesday"),NSLocalizedString("Thursday",comment:"Thursday"),NSLocalizedString("Friday",comment:"Friday"),NSLocalizedString("Saturday",comment:"Saturday"),NSLocalizedString("Sunday",comment:"Sunday")]
     
     var options = SwipeMenuViewOptions()
+    var pdfButton: UIBarButtonItem!
     
+    var pdfURL: URL!
+    let pdfViewController = PDFViewController()
     
     func read_diet(){
         
+        if !Reachability.isConnectedToNetwork(){
+            self.load_tabs()
+            
+            var day = Calendar.current.component(.weekday, from: Date())
+            day = day - 2
+            
+            if (day < 0){
+                day = 6
+            }
+            
+            DispatchQueue.main.async {
+                // code here
+                self.reload(date:day)
+            }
+            
+            return;
+        }
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
         
         var parameters_arr: [String:AnyObject] = [:]
         
@@ -38,9 +61,19 @@ class DietViewController: SwipeMenuViewController {
                     Swift.debugPrint("Error: \(err.localizedDescription)")
                     
                     //Logout function
+                    /*
                     OperationQueue.main.addOperation {
+                        UserDefaults.standard.setValue(false, forKey: "launchedBefore")
                         
+                        let Login = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
+                        
+                        UIApplication.shared.unregisterForRemoteNotifications()
+                        
+                        Util.deleteFile("az.sqlite")
+                        
+                        self.present(Login, animated: true, completion: nil)
                     }
+                    */
                     
                     return //also notify app of failure as needed
                 }
@@ -50,11 +83,22 @@ class DietViewController: SwipeMenuViewController {
                 if (json_response.value(forKey: "error") as! String == "true"){
                     //Logout function
                     OperationQueue.main.addOperation {
+                        UserDefaults.standard.setValue(false, forKey: "launchedBefore")
+                        
+                        let Login = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
+                        
+                        UIApplication.shared.unregisterForRemoteNotifications()
+                        
+                        Util.deleteFile("az.sqlite")
+                        
+                        UIApplication.shared.keyWindow?.rootViewController = Login
                         
                     }
                     
                     return //also notify app of failure as needed
                 }
+                
+                
                 
                 ModelManager.getInstance().deleteAll("diet_customer")
                 
@@ -94,17 +138,15 @@ class DietViewController: SwipeMenuViewController {
                 self.load_tabs()
                 
                 var day = Calendar.current.component(.weekday, from: Date())
-                day = day - 1
+                day = day - 2
                 
-                if (day == -1){
+                if (day < 0){
                     day = 6
                 }
                 
                  DispatchQueue.main.async {
                     // code here
-                    self.reload()
-                    
-                    self.swipeMenuView.jump(to: day, animated: true)
+                    self.reload(date:day)
                 }
             }
         } catch let error {
@@ -123,34 +165,192 @@ class DietViewController: SwipeMenuViewController {
         dates.forEach { date in
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
-            let vc = storyboard.instantiateViewController(withIdentifier: "DietTableViewController") as! DietTableViewController
-            
-            vc.date = date
-            vc.title = date
-            
-            self.addChild(vc)
+            DispatchQueue.main.async {
+                let vc = storyboard.instantiateViewController(withIdentifier: "DietTableViewController") as! DietTableViewController
+                
+                vc.date = date
+                vc.title = date
+                
+                self.addChild(vc)
+            }
         }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setUpTheming()
+
         swipeMenuView.dataSource = self
         swipeMenuView.delegate = self
-        
-        options.tabView.itemView.selectedTextColor = UIColor().convertHexStringToColor(GlobalVar.blueColor)
-        options.tabView.additionView.backgroundColor = UIColor().convertHexStringToColor(GlobalVar.blueColor)
-        
+
+        self.pdfButton = UIBarButtonItem(image: UIImage(named: "diet_pdf"), style: UIBarButtonItem.Style.done, target: self, action: #selector(showPDF))
+        self.pdfButton.isEnabled = true
+
+        let button = UIBarButtonItem(image: UIImage(named: "note"), style: UIBarButtonItem.Style.done, target: self, action: #selector(showNotes))
+
+        navigationItem.leftBarButtonItem = button
+        navigationItem.rightBarButtonItem = self.pdfButton
+
         read_diet()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTabBarAppearance()
+    }
+    func updateTabBarAppearance() {
+        if #available(iOS 26.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+
+            if traitCollection.userInterfaceStyle == .dark {
+                appearance.backgroundColor = .black
+                appearance.shadowImage = nil
+                appearance.shadowColor = nil
+
+                if let tabBar = self.tabBarController?.tabBar {
+                    tabBar.standardAppearance = appearance
+                    tabBar.scrollEdgeAppearance = appearance
+                    tabBar.isTranslucent = false
+                }
+            }
+        }
+    }
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
+            // reapply tab bar appearance
+            updateTabBarAppearance()
+        }
+    }
+    @objc func showPDF(){
+        self.pdfButton.isEnabled = false
+        
+        if !Reachability.isConnectedToNetwork(){
+            let alert = UIAlertController(title: NSLocalizedString("alert",comment: "alert"), message: NSLocalizedString("NOINTERNETCONNECTION",comment: "NOINTERNETCONNECTION"), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK",comment: "OK"), style: .default, handler: { action in }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
+            self.pdfButton.isEnabled = true
+            
+            return;
+        }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        ANLoader.showLoading("", disableUI: true)
+        
+        var parameters_arr: [String:AnyObject] = [:]
+        
+        parameters_arr["username"] =  GlobalVar.deviceUsername as AnyObject
+        parameters_arr["password"] = GlobalVar.devicePassword as AnyObject
+        
+        do{
+            HTTP.POST(GlobalVar.URL+"diet_check_pdf.php", parameters:parameters_arr) { response in
+                //do things...
+                
+                OperationQueue.main.addOperation {
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    
+                    ANLoader.hide()
+                }
+                
+                if let err = response.error {
+                    Swift.debugPrint("Error: \(err.localizedDescription)")
+                    
+                    return //also notify app of failure as needed
+                }
+                
+                let json_response : NSDictionary = Util.nsdataToJSON(response.text!.data(using: String.Encoding.utf8)!)!
+                
+                if (json_response.value(forKey: "error") as! String == "true"){
+                    //Logout function
+                    OperationQueue.main.addOperation {
+                        UserDefaults.standard.setValue(false, forKey: "launchedBefore")
+                        
+                        let Login = self.storyboard!.instantiateViewController(withIdentifier: "LoginViewController")
+                        
+                        UIApplication.shared.unregisterForRemoteNotifications()
+                        
+                        Util.deleteFile("az.sqlite")
+                        
+                        UIApplication.shared.keyWindow?.rootViewController = Login
+                        
+                    }
+                    
+                    return //also notify app of failure as needed
+                }
+                                
+                //Getting the JSON array teams from the response
+                let data: NSDictionary = json_response.value(forKey: "data") as! NSDictionary
+                
+                if(data.value(forKey: "exists") as! String == "true"){
+                    DispatchQueue.main.async { // Make sure you're on the main thread here
+                        ANLoader.showLoading("", disableUI: true)
+                    }
+                    
+                    guard let url = URL(string: data.value(forKey: "url") as! String) else { return }
+                    
+                    let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
+                    
+                    let downloadTask = urlSession.downloadTask(with: url)
+                    
+                    downloadTask.resume()
+                }else{
+                    DispatchQueue.main.async {
+                        
+                    let alert = UIAlertController(title: NSLocalizedString("alert", comment: "alert"), message: NSLocalizedString("no_measures_pdf_found", comment: "no_measures_pdf_found"),preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: { action in
+                          switch action.style{
+                          case .default:
+                                print("default")
+
+                          case .cancel:
+                                print("cancel")
+
+                          case .destructive:
+                                print("destructive")
+                    }}))
+                        
+                    self.present(alert, animated: true, completion: nil)
+                        
+                    }
+                }
+                
+                DispatchQueue.main.async { // Make sure you're on the main thread here
+                    self.pdfButton.isEnabled = true
+                }
+            }
+        } catch let error {
+            Swift.debugPrint("Got an error creating the request: \(error)")
+            
+            OperationQueue.main.addOperation {
+                
+            }
+            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+        }
+        
+    }
+    
+    @objc func showNotes(){
+        performSegue(withIdentifier: "showDietNote", sender: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
     
-    private func reload() {
-        swipeMenuView.reloadData(options: options)
+    private func reload( date: Int) {
+        swipeMenuView.reloadData(options: options, default: date, isOrientationChange: false)
     }
     
     // MARK: - SwipeMenuViewDelegate
@@ -187,3 +387,59 @@ class DietViewController: SwipeMenuViewController {
         return vc
     }
 }
+
+extension DietViewController:  URLSessionDownloadDelegate {
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        print("downloadLocation:", location)
+        
+        DispatchQueue.main.async { // Make sure you're on the main thread here
+            ANLoader.hide()
+        }
+        
+        self.pdfViewController.pdfTemporaryLocation = location
+        // create destination URL with the original pdf name
+        guard let url = downloadTask.originalRequest?.url else { return }
+        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+        let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
+        // delete original copy
+        try? FileManager.default.removeItem(at: destinationURL)
+        // copy from temp to Document
+        do {
+            try FileManager.default.copyItem(at: location, to: destinationURL)
+            self.pdfURL = destinationURL
+            
+            self.pdfViewController.pdfURL = self.pdfURL
+            DispatchQueue.main.async { // Make sure you're on the main thread here
+                self.present(self.pdfViewController, animated: false, completion: nil)
+            }
+            
+        } catch let error {
+            print("Copy Error: \(error.localizedDescription)")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithDefaultBackground()
+
+            if let tabBar = self.tabBarController?.tabBar {
+                tabBar.standardAppearance = appearance
+                tabBar.scrollEdgeAppearance = appearance
+                tabBar.isTranslucent = true
+            }
+        }
+    }
+}
+
+extension DietViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        options.tabView.backgroundColor = theme.backgroundColor
+        options.tabView.itemView.selectedTextColor = theme.textBlueColor
+        options.tabView.additionView.backgroundColor = theme.textBlueColor
+    }
+}
+
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "HomeViewController.show_values():HomeViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "HomeViewController.viewDidLoad():HomeViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -10,7 +10,7 @@ import UIKit
 
 class DietCell: UITableViewCell
 {
-    @IBOutlet weak var lblDetails: UILabel!
+    @IBOutlet weak var txtDetails: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

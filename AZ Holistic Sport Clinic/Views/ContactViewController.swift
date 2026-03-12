@@ -9,21 +9,61 @@
 import UIKit
 import SwiftHTTP
 
-class ContactViewController: UITableViewController {
+class ContactViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var txtTitle : UITextField!
-    @IBOutlet weak var txtSubject : UITextField!
-    
+    @IBOutlet weak var txtPhone : UILabel!
     @IBOutlet weak var txtBody : UITextView!
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        txtTitle.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        txtBody.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        
+        textField.layer.borderColor = UIColor().convertHexStringToColor(GlobalVar.blueColor).cgColor
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        txtTitle.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        
+        txtBody.layer.borderColor = UIColor().convertHexStringToColor(GlobalVar.blueColor).cgColor
+        
+        //txtBody.placeholder = ""
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        //if (txtBody.text == ""){
+        //    txtBody.placeholder = NSLocalizedString("Addyourbodytexthere",comment: "Add_your_body_text_here")
+        //}else{
+        //    txtBody.placeholder = ""
+        //}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpTheming()
+        
+        txtTitle.delegate = self
+        
+        txtTitle.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
+        txtTitle.layer.borderWidth = 1.0
+        txtTitle.layer.cornerRadius = 5
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(make_a_call))
+        txtPhone.isUserInteractionEnabled = true
+        txtPhone.addGestureRecognizer(tap)
+        
+        txtTitle.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
         
         txtBody.layer.borderColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0).cgColor
         txtBody.layer.borderWidth = 1.0
         txtBody.layer.cornerRadius = 5
         
-        txtBody.placeholder = "Add you body text"
+        //txtBody.placeholder = NSLocalizedString("Addyourbodytexthere",comment: "Add_your_body_text_here")
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationController?.navigationBar.tintColor = UIColor().convertHexStringToColor(GlobalVar.blueColor)
@@ -35,13 +75,25 @@ class ContactViewController: UITableViewController {
         let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "send"), style: .done, target: self, action: #selector(send_message))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
+        txtBody.delegate = self
+    }
+    
+    @objc func make_a_call(){
+        guard let url = URL(string: "tel://70003400") else {
+            return //be safe
+        }
         
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @objc func send_message(){
         
-        if ((txtTitle.text?.isEmpty)! || (txtSubject.text?.isEmpty)! || (txtBody.text?.isEmpty)!){
-            let alert = UIAlertController(title: "Alert", message: "Please fill the fields", preferredStyle: .alert)
+        if ((txtTitle.text?.isEmpty)!  || (txtBody.text?.isEmpty)!){
+            let alert = UIAlertController(title: NSLocalizedString("alert",comment: "Alert"), message: NSLocalizedString("Pleasefillthefields",comment: "Pleasefillthefields"), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 switch action.style{
                 case .default:
@@ -71,7 +123,6 @@ class ContactViewController: UITableViewController {
         parameters_arr["password"] = GlobalVar.devicePassword as AnyObject
         
         parameters_arr["title"] = txtTitle.text as AnyObject
-        parameters_arr["subject"] = txtSubject.text as AnyObject
         parameters_arr["body"] = txtBody.text as AnyObject
         
         self.txtTitle.becomeFirstResponder()
@@ -103,11 +154,10 @@ class ContactViewController: UITableViewController {
                     //Logout function
                     OperationQueue.main.addOperation {
                         self.txtTitle.text = ""
-                        self.txtSubject.text = ""
                         self.txtBody.text = ""
                         
                         
-                        let alert = UIAlertController(title: "Success", message: "We approciate for your message.", preferredStyle: .alert)
+                        let alert = UIAlertController(title: NSLocalizedString("SUCCESS",comment: "Alert"), message: NSLocalizedString("Weapprociateforyourmessage",comment: "Alert"), preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                             switch action.style{
                             case .default:
@@ -118,7 +168,6 @@ class ContactViewController: UITableViewController {
                                 
                             case .destructive:
                                 print("destructive")
-                                
                                 
                             }
                             
@@ -147,5 +196,21 @@ class ContactViewController: UITableViewController {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
         }
+    }
+}
+
+extension ContactViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        tableView.backgroundColor = theme.backgroundColor
+        //titleLabel.textColor = theme.textColor
+        //subtitleLabel.textColor = theme.textColor
+        txtTitle.textColor = theme.textColor
+        txtPhone.textColor = theme.textColor
+        txtBody.textColor = theme.textColor
+        
+        txtTitle.backgroundColor = theme.backgroundColor
+        txtPhone.backgroundColor = theme.backgroundColor
+        txtBody.backgroundColor = theme.backgroundColor
     }
 }

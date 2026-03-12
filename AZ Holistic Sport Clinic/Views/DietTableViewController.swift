@@ -12,6 +12,29 @@ import SwiftHTTP
 class DietTableViewController: UITableViewController {
     var data : NSMutableArray = []
     var date : String = ""
+    static var readData : Bool = true
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if #available(iOS 13.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                // User Interface is Dark
+                self.themeProvider.currentTheme = .dark
+            }else{
+                self.themeProvider.currentTheme = .light
+            }
+        }
+        
+        if (DietTableViewController.readData){
+            data = ModelManager.getInstance().q("SELECT diet_customer_time,diet_customer_title_en,diet_customer_title_el,diet_customer_"+date+"_text as diet_customer_text FROM diet_customer WHERE diet_customer_"+date+"_text != '' AND diet_customer_"+date+"_text != '-' ORDER BY diet_customer_time")
+        
+            self.tableView.reloadData()
+            
+            //DietTableViewController.readData = false
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +44,32 @@ class DietTableViewController: UITableViewController {
         
         self.tableView.register(DietCell.self, forCellReuseIdentifier: "diet")
         
-        
-        if (date == "Thursday"){
+        switch date {
+        case "Δευτέρα":
+            date = "Monday"
+            break;
+        case "Τρίτη":
+            date = "Tuesday"
+            break;
+        case "Τετάρτη":
+            date = "Wednesday"
+            break;
+        case "Thursday":
             date = "Thirsday"
+            break
+        case "Πέμπτη":
+            date = "Thirsday"
+            break;
+        case "Παρασκευή":
+            date = "Friday"
+        case "Σάββατο":
+            date = "Saturday"
+            break;
+        case "Κυριακή":
+            date = "Sunday"
+        default: break
+            
         }
-        
-        data = ModelManager.getInstance().q("SELECT diet_customer_time,diet_customer_title_en,diet_customer_title_el,diet_customer_"+date+"_text as diet_customer_text FROM diet_customer WHERE diet_customer_"+date+"_text != '' AND diet_customer_"+date+"_text != '-' ORDER BY diet_customer_time")
         
         self.tableView.tableFooterView = UIView()
     }
@@ -37,7 +80,7 @@ class DietTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let val : NSDictionary = data.object(at: section) as! NSDictionary
-        let text: String =  (val.value(forKey: "diet_customer_time") as! String) + " - " + (val.value(forKey: "diet_customer_title_en") as! String)
+        let text: String =  (val.value(forKey: "diet_customer_time") as! String) + " - " + (val.value(forKey: "diet_customer_title_"+GlobalVar.deviceLang) as! String)
         
         return text
     }
@@ -58,10 +101,13 @@ class DietTableViewController: UITableViewController {
         return nil
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90.0
+   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
-    
+
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,6 +115,26 @@ class DietTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        
+        return action == #selector(copy(_:))
+    }
+    
+    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        
+        let cell = self.tableView.cellForRow(at: indexPath)
+        let text = cell?.textLabel?.text
+        
+        if action == #selector(copy(_:)) {
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = text
+        }
     }
     
     override func tableView(_ tableView: UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,7 +151,23 @@ class DietTableViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.isUserInteractionEnabled = true
+        
     
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //cell.backgroundColor = UIColor.clear
+    }
+}
+
+extension DietTableViewController: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        tableView.backgroundColor = theme.backgroundColor
+        
+        //titleLabel.textColor = theme.textColor
+        //subtitleLabel.textColor = theme.textColor
     }
 }

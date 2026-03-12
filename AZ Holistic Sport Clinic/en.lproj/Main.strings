@@ -1,0 +1,266 @@
+
+/* Class = "UILabel"; text = "Complaints / Suggestions"; ObjectID = "0Vm-Er-h26"; */
+"0Vm-Er-h26.text" = "Complaints / Suggestions";
+
+/* Class = "UILabel"; text = "Last Synched"; ObjectID = "0dL-By-yrv"; */
+"0dL-By-yrv.text" = "Last Synched";
+
+/* Class = "UILabel"; text = "CALORIMETER"; ObjectID = "0nt-am-Enr"; */
+"0nt-am-Enr.text" = "CALORIMETER";
+
+/* Class = "UITabBarItem"; title = "Information"; ObjectID = "1Tr-9z-kDz"; */
+"1Tr-9z-kDz.title" = "Information";
+
+/* Class = "UINavigationItem"; title = "GDPR"; ObjectID = "4uA-vH-ED4"; */
+"4uA-vH-ED4.title" = "GDPR";
+
+/* Class = "UINavigationItem"; title = "Measures"; ObjectID = "5NB-SR-vLV"; */
+"5NB-SR-vLV.title" = "Measures";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "5cW-jh-g59"; */
+"5cW-jh-g59.title" = "Profile";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 8"; ObjectID = "5e2-gV-MLL"; */
+"5e2-gV-MLL.headerTitle" = "Question 8";
+
+/* Class = "UINavigationItem"; title = "Information"; ObjectID = "66d-aw-WcE"; */
+"66d-aw-WcE.title" = "Information";
+
+/* Class = "UILabel"; text = "ΤΑΒΑΤΑ"; ObjectID = "8E6-6p-0fc"; */
+"8E6-6p-0fc.text" = "ΤΑΒΑΤΑ";
+
+/* Class = "UINavigationItem"; title = "Diet"; ObjectID = "9DW-pw-JOv"; */
+"9DW-pw-JOv.title" = "Diet";
+
+/* Class = "UILabel"; text = "24/02/2019"; ObjectID = "AkH-4W-s7l"; */
+"AkH-4W-s7l.text" = "24/02/2019";
+
+/* Class = "UITableViewController"; title = "PROFILE"; ObjectID = "BdU-ll-8Uj"; */
+"BdU-ll-8Uj.title" = "PROFILE";
+
+/* Class = "UILabel"; text = "Not Applicable"; ObjectID = "CLq-Q8-YMR"; */
+"CLq-Q8-YMR.text" = "Not Applicable";
+
+/* Class = "UITableViewController"; title = "Questionaire"; ObjectID = "F3w-f0-sVd"; */
+"F3w-f0-sVd.title" = "Questionaire";
+
+/* Class = "UITabBarItem"; title = "Diet"; ObjectID = "FB2-9v-yWM"; */
+"FB2-9v-yWM.title" = "Diet";
+
+/* Class = "UINavigationController"; title = "INFORMATION"; ObjectID = "FD2-5W-TNc"; */
+"FD2-5W-TNc.title" = "INFORMATION";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 2"; ObjectID = "FED-3X-hho"; */
+"FED-3X-hho.headerTitle" = "Question 2";
+
+/* Class = "UILabel"; text = "Terms and Rules"; ObjectID = "KBO-wz-U6h"; */
+"KBO-wz-U6h.text" = "Terms and Rules";
+
+/* Class = "UITabBarItem"; title = "Diet"; ObjectID = "Kin-DI-4YM"; */
+"Kin-DI-4YM.title" = "Diet";
+
+/* Class = "UILabel"; text = "Notifications"; ObjectID = "MHI-S8-5DW"; */
+"MHI-S8-5DW.text" = "Notifications";
+
+/* Class = "UILabel"; text = "70003400"; ObjectID = "MWA-ix-IVV"; */
+"MWA-ix-IVV.text" = "70003400";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "MdH-Dk-pij"; */
+"MdH-Dk-pij.title" = "Home";
+
+/* Class = "UILabel"; text = "Payment Terms"; ObjectID = "NGP-D0-smJ"; */
+"NGP-D0-smJ.text" = "Payment Terms";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 3"; ObjectID = "Owb-e2-5Ve"; */
+"Owb-e2-5Ve.headerTitle" = "Question 3";
+
+/* Class = "UINavigationItem"; title = "Appointment Request"; ObjectID = "PtR-uy-03T"; */
+"PtR-uy-03T.title" = "Appointment Request";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pzf-ie-BQy"; */
+"Pzf-ie-BQy.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "QDW-on-EcN"; */
+"QDW-on-EcN.title" = "Home";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "R4X-MA-pw3"; */
+"R4X-MA-pw3.text" = "Label";
+
+/* Class = "UILabel"; text = "1000"; ObjectID = "RDt-fJ-drN"; */
+"RDt-fJ-drN.text" = "1000";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Rie-vT-kBB"; */
+"Rie-vT-kBB.normalTitle" = "Login";
+
+/* Class = "UITableViewSection"; headerTitle = "Note"; ObjectID = "S0N-7G-Tq5"; */
+"S0N-7G-Tq5.headerTitle" = "Note";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "SzQ-iA-gNh"; */
+"SzQ-iA-gNh.text" = "Title";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 4"; ObjectID = "TDx-GO-sCt"; */
+"TDx-GO-sCt.headerTitle" = "Question 4";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "THP-q8-Q6y"; */
+"THP-q8-Q6y.text" = "Label";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "USj-Wr-9cE"; */
+"USj-Wr-9cE.text" = "-";
+
+/* Class = "UIButton"; normalTitle = "CALL PARKING"; ObjectID = "UhE-GA-R5d"; */
+"UhE-GA-R5d.normalTitle" = "CALL PARKING";
+
+/* Class = "UILabel"; text = "Subscription's End Date"; ObjectID = "VMk-Dl-0WT"; */
+"VMk-Dl-0WT.text" = "Subscription's End Date";
+
+/* Class = "UILabel"; text = "70003400"; ObjectID = "VV9-9z-rYC"; */
+"VV9-9z-rYC.text" = "70003400";
+
+/* Class = "UILabel"; text = "Trainer"; ObjectID = "Vir-aE-bwQ"; */
+"Vir-aE-bwQ.text" = "Trainer";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[0] = "Weight"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[0]" = "Weight";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[1] = "Fat %"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[1]" = "Fat %";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[2] = "Muscle Mass"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[2]" = "Muscle Mass";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[3] = "Visceral Fat"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[3]" = "Visceral Fat";
+
+/* Class = "UISegmentedControl"; WZd-b9-BW2.segmentTitles[4] = "Check ins"; ObjectID = "WZd-b9-BW2"; */
+"WZd-b9-BW2.segmentTitles[4]" = "Check ins";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "XBL-c4-nG4"; */
+"XBL-c4-nG4.text" = "-";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 5"; ObjectID = "XCV-Mx-Vc5"; */
+"XCV-Mx-Vc5.headerTitle" = "Question 5";
+
+/* Class = "UILabel"; text = "Customer ID"; ObjectID = "Xou-PD-30e"; */
+"Xou-PD-30e.text" = "Customer ID";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "aQq-q8-OUs"; */
+"aQq-q8-OUs.text" = "Username";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "aTS-b0-JkY"; */
+"aTS-b0-JkY.text" = "-";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Home";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 7"; ObjectID = "bPE-ww-jEr"; */
+"bPE-ww-jEr.headerTitle" = "Question 7";
+
+/* Class = "UILabel"; text = "ΟΝΟΜΑ\nΕΠΙΘΕΤΟ"; ObjectID = "cUZ-wn-Z5C"; */
+"cUZ-wn-Z5C.text" = "ΟΝΟΜΑ\nΕΠΙΘΕΤΟ";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 6"; ObjectID = "cxg-sX-Qno"; */
+"cxg-sX-Qno.headerTitle" = "Question 6";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "d9J-D1-SaY"; */
+"d9J-D1-SaY.text" = "-";
+
+/* Class = "UILabel"; text = "AZ Holistic Sports Clinic"; ObjectID = "f6B-Z5-OSR"; */
+"f6B-Z5-OSR.text" = "AZ Holistic Sports Clinic";
+
+/* Class = "UITableViewSection"; headerTitle = "Question 1"; ObjectID = "fBJ-8Q-YiC"; */
+"fBJ-8Q-YiC.headerTitle" = "Question 1";
+
+/* Class = "UILabel"; text = "Membership Privileges"; ObjectID = "fH8-cz-ZOp"; */
+"fH8-cz-ZOp.text" = "Exercise Guide";
+
+/* Class = "UILabel"; text = "Trainer"; ObjectID = "fe7-iu-CnA"; */
+"fe7-iu-CnA.text" = "Trainer";
+
+/* Class = "UILabel"; text = "*** If you want to not answer a question please don't fill the stars"; ObjectID = "g0P-qR-VwW"; */
+"g0P-qR-VwW.text" = "*** If you want to not answer a question please don't fill the stars";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "gnu-E7-lnn"; */
+"gnu-E7-lnn.text" = "Password";
+
+/* Class = "UILabel"; text = "GDPR"; ObjectID = "jWN-jI-S5d"; */
+"jWN-jI-S5d.text" = "Trainers";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "jWc-oQ-GND"; */
+"jWc-oQ-GND.text" = "Language";
+
+/* Class = "UILabel"; text = "CHECK IN"; ObjectID = "kUF-fJ-Fei"; */
+"kUF-fJ-Fei.text" = "CHECK IN";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "l5k-fA-yM8"; */
+"l5k-fA-yM8.text" = "Label";
+
+/* Class = "UILabel"; text = "02/02/2000"; ObjectID = "lSa-8v-MjY"; */
+"lSa-8v-MjY.text" = "02/02/2000";
+
+/* Class = "UILabel"; text = "Appointment Request"; ObjectID = "lgg-yn-zFW"; */
+"lgg-yn-zFW.text" = "Appointment Request";
+
+/* Class = "UIButton"; normalTitle = "English"; ObjectID = "m0z-s5-zXn"; */
+"m0z-s5-zXn.normalTitle" = "English";
+
+/* Class = "UITableViewController"; title = "News / Notifications"; ObjectID = "mbE-Fs-ynN"; */
+"mbE-Fs-ynN.title" = "News / Notifications";
+
+/* Class = "UITableViewController"; title = "Contact"; ObjectID = "mpR-ZA-BV7"; */
+"mpR-ZA-BV7.title" = "Contact";
+
+/* Class = "UIButton"; normalTitle = "Sync Now"; ObjectID = "nkF-ai-9UO"; */
+"nkF-ai-9UO.normalTitle" = "Sync Now";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "oN3-tX-1ic"; */
+"oN3-tX-1ic.text" = "Title";
+
+/* Class = "UILabel"; text = "01/01/2019"; ObjectID = "oQf-2F-zxN"; */
+"oQf-2F-zxN.text" = "01/01/2019";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "p6Z-uW-i4p"; */
+"p6Z-uW-i4p.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Measures"; ObjectID = "qJh-5W-9TF"; */
+"qJh-5W-9TF.title" = "Measures";
+
+/* Class = "UINavigationItem"; title = "Complaints / Suggestions"; ObjectID = "qaY-T7-VJR"; */
+"qaY-T7-VJR.title" = "Complaints / Suggestions";
+
+/* Class = "UITableViewController"; title = "Contact"; ObjectID = "qoE-5q-2U9"; */
+"qoE-5q-2U9.title" = "Contact";
+
+/* Class = "UINavigationItem"; title = "Membership Privileges"; ObjectID = "rdF-mB-gQH"; */
+"rdF-mB-gQH.title" = "Membership Privileges";
+
+/* Class = "UILabel"; text = "Balance Unsettled"; ObjectID = "reL-3h-afy"; */
+"reL-3h-afy.text" = "Balance Unsettled";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "rla-d1-0SX"; */
+"rla-d1-0SX.title" = "Profile";
+
+/* Class = "UILabel"; text = "Text"; ObjectID = "snn-Rc-Ggb"; */
+"snn-Rc-Ggb.text" = "Text";
+
+/* Class = "UILabel"; text = "Diet Rules"; ObjectID = "sq7-lf-4bt"; */
+"sq7-lf-4bt.text" = "Diet Rules";
+
+/* Class = "UILabel"; text = "1000"; ObjectID = "x5N-CE-agq"; */
+"x5N-CE-agq.text" = "1000";
+
+/* Class = "UILabel"; text = "Request"; ObjectID = "xoz-mk-uv5"; */
+"xoz-mk-uv5.text" = "Request";
+
+/* Class = "UILabel"; text = "Next Appointment"; ObjectID = "xvi-Yw-JFQ"; */
+"xvi-Yw-JFQ.text" = "Next Appointment";
+
+/* Class = "UITabBarItem"; title = "Measures"; ObjectID = "yqE-zp-oZb"; */
+"yqE-zp-oZb.title" = "Measures";
+
+/* Class = "UILabel"; text = "Questionaire"; ObjectID = "zQX-HO-UDD"; */
+"zQX-HO-UDD.text" = "Questionaire";
+
+/* Class = "UILabel"; text = "News / Notifications"; ObjectID = "zRd-o2-jIi"; */
+"zRd-o2-jIi.text" = "News / Notifications";
+"jMf-cr-Hoc.text" = "Timetable"
+"buf-QV-G4v.text" = "Measurements Rules";

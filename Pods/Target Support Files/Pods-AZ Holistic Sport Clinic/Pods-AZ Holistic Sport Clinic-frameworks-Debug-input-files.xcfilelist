@@ -1,0 +1,18 @@
+${PODS_ROOT}/Target Support Files/Pods-AZ Holistic Sport Clinic/Pods-AZ Holistic Sport Clinic-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ANLoader/ANLoader.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework
+${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework
+${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework
+${BUILT_PRODUCTS_DIR}/RSBarcodes_Swift/RSBarcodes_Swift.framework
+${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework
+${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework
+${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework
+${BUILT_PRODUCTS_DIR}/ScrollableGraphView/ScrollableGraphView.framework
+${BUILT_PRODUCTS_DIR}/SwiftAlgorithms/Algorithms.framework
+${BUILT_PRODUCTS_DIR}/SwiftHTTP/SwiftHTTP.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/SwipeMenuViewController/SwipeMenuViewController.framework

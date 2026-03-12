@@ -20,6 +20,7 @@ class NewsDetails: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setUpTheming()
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,15 +32,66 @@ class NewsDetails: UIViewController {
         super.viewWillAppear(animated)
         
         lblTitle?.text =   n_title
-        lblDate?.text =    n_date
+        //lblDate?.text =    n_date
+        //lblDate?.text =    ""
         
         //let myAttribute = [ NSFontAttributeName: UIFont.systemFont(ofSize: 12) ]
         //let myAttrString = NSAttributedString(string: answer!, attributes: myAttribute)
-        n_body = "<style>body{font-size:16px; color:#555555; font-family: '"+UIFont.systemFont(ofSize: 16).familyName+"';}</style>" + n_body!
+        n_body = "<style>body{font-size:20px; color:#555555; font-family: 'Arial';}</style>" + n_body!
         
         lblBody?.attributedText = n_body?.htmlAttributedString()
         
         self.navigationItem.title = n_date
     }
     
+}
+
+extension NewsDetails: Themed {
+    func applyTheme(_ theme: AppTheme) {
+        view.backgroundColor = theme.backgroundColor
+        
+        //titleLabel.textColor = theme.textColor
+        //subtitleLabel.textColor = theme.textColor
+        lblTitle.textColor = theme.textColor
+        //lblDate.textColor = theme.textColor
+        lblBody.textColor = theme.textColor
+        
+        if theme.textColor == .white {
+            n_body = """
+            <style>
+            body {
+                font-size: 20px;
+                color: #ffffff;
+                font-family: 'Arial';
+                line-height: 1.4;
+            }
+            </style>
+            """ + n_body!
+            lblBody?.attributedText = n_body?.htmlAttributedString()
+
+        } else {
+            n_body = """
+            <style>
+            body {
+                font-size: 20px;
+                color: #555555;
+                font-family: 'Arial';
+                line-height: 1.4;
+            }
+            </style>
+            """ + n_body!
+            lblBody?.attributedText = n_body?.htmlAttributedString()
+
+        }
+
+        
+        lblTitle.backgroundColor = theme.backgroundColor
+        //lblDate.backgroundColor = theme.backgroundColor
+        lblBody.backgroundColor = theme.backgroundColor
+        
+        lblTitle.numberOfLines = 2
+        lblTitle.lineBreakMode = .byTruncatingTail // or .byWordWrapping if you prefer wrapping
+        lblTitle.adjustsFontSizeToFitWidth = true
+        lblTitle.minimumScaleFactor = 0.5
+    }
 }
