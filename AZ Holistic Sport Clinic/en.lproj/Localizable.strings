@@ -105,6 +105,6 @@ QUESTION5="Diet Adherence Rate";
 QUESTION6="Fitness Adherence Rate";
 QUESTION7="Nutritional goal";
 TRAINER="TRAINER";
-Noresults = "No any results";
+Noresults = "No data found";
 TRAINERS="Trainers";
 TIMETABLE="Timetable";
